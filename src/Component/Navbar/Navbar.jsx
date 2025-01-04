@@ -1,5 +1,12 @@
 
 const Navbar = () => {
+
+  const driveLink = "https://drive.google.com/file/d/1gUDyWBAvPCw07gW9_oDzi9xnpNTdjcCu/view?usp=sharing";
+
+  const navigateToResume = () => {
+    window.open(driveLink, "_blank");
+  };
+
   return (
     <div className="navbar sticky bg-[#0D2438] top-0 z-50">
       <div className="navbar-start">
@@ -42,7 +49,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-primary bg-[#0891B2] rounded-2xl border-none">Download CV</a>
+        <a className="btn btn-primary bg-[#0891B2] rounded-2xl border-none" onClick={navigateToResume}>Download CV</a>
       </div>
     </div>
   );
