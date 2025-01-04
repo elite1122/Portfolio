@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import Skills from '../Skills/Skills';
-import { div } from 'framer-motion/client';
 import Banner from '../Banner/Banner';
 
 const Home = () => {
