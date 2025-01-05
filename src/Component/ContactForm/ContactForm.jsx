@@ -40,16 +40,16 @@ const ContactForm = () => {
     };
 
     return (
-        <section id="contact" className="py-10 px-3">
-            <div className="text-center mt-8">
-                <h3 className="text-4xl font-semibold text-gray-100">
+        <section id="contact" className="py-10 ">
+            <div className="text-center bg-gray-900">
+                <h3 className="text-4xl font-semibold text-gray-100 pt-8">
                     Contact <span className="text-cyan-600">Me</span>
                 </h3>
                 <p className="text-gray-400 mt-3 text-lg">Get in touch</p>
 
                 <div
-                    className="mt-16 flex md:flex-row flex-col
-          gap-6 max-w-5xl bg-gray-800 md:p-6 p-2 rounded-lg mx-auto"
+                    className="mt-8 flex md:flex-row flex-col
+          gap-6 max-w-5xl md:p-6 p-2 rounded-lg mx-auto"
                 >
                     {/* Form */}
                     <form ref={form} onSubmit={sendEmail} className="flex flex-col flex-1 gap-5">
