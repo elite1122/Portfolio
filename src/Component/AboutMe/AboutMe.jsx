@@ -23,7 +23,7 @@ const AboutMe = () => {
                     <div className="p-2">
                         <div className="text-gray-300 my-3">
                             <p className="text-justify leading-7 w-11/12 mx-auto">
-                                I have complete my CSE degree from Daffodil International University.As a learner, I believe hardworking and team working capability is  a foremost need to be successful.  This CV site of mine, is a digital way of documenting everything I've done , everything I've learned through experiences and how I see myself in the next future years. I like to  develop myself everyday since I never want to limit myself! If you'd like to learn more about me, browse and look through the site. If you see something you like or you want to discuss, feel free to drop a line for me.
+                                I have completed my CSE degree from Daffodil International University.As a learner, I believe hardworking and team working capability is  a foremost need to be successful.  This CV site of mine, is a digital way of documenting everything I've done , everything I've learned through experiences and how I see myself in the next future years. I like to  develop myself everyday since I never want to limit myself! If you'd like to learn more about me, browse and look through the site. If you see something you like or you want to discuss, feel free to drop a line for me.
                             </p>
                             <div className="flex mt-10 items-center gap-7">
                                 {info.map((content) => (
