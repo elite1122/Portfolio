@@ -5,6 +5,7 @@ import Banner from '../Banner/Banner';
 import AboutMe from '../AboutMe/AboutMe';
 import ContactForm from '../ContactForm/ContactForm';
 import { ToastContainer } from 'react-toastify';
+import Project from '../Project/Project';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
                 <Banner></Banner>
                 <AboutMe></AboutMe>
                 <Skills></Skills>
+                <Project></Project>
                 <ContactForm></ContactForm>
             </div>
         </div>

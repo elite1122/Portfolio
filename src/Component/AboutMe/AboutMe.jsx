@@ -4,16 +4,8 @@ const AboutMe = () => {
         { text: "Completed Projects", count: "10" },
     ];
 
-
-    const driveLink = "https://drive.google.com/file/d/1OzuOrRm0Rn9g7xwO6RUO9zUZHkvxFjtr/view?usp=drivesdk";
-
-
-    const navigateToResume = () => {
-        window.open(driveLink, "_blank");
-    };
-
     return (
-        <section id="about" className="py-8 text-gray-300">
+        <section id="about" className="py-10 text-gray-300">
             <div className="text-center mt-8">
                 <h3 className="text-4xl font-semibold">
                     About <span className="text-cyan-600">Me</span>

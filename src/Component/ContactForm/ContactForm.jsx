@@ -32,7 +32,7 @@ const ContactForm = () => {
                     form.current.reset();
                 },
                 (error) => {
-                    console.error("FAILED...", error.text);
+                    // console.error("FAILED...", error.text);
                     toast.error("Failed to send message. Please try again.");
                 }
             );
