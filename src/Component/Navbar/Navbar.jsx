@@ -3,7 +3,7 @@ import { Link } from "react-scroll";
 
 const Navbar = () => {
   const driveLink =
-    "https://drive.google.com/file/d/1gUDyWBAvPCw07gW9_oDzi9xnpNTdjcCu/view?usp=sharing";
+    "https://drive.google.com/file/d/1JXEV3uQdJ7-VjIY0-wXCF9iLU5dfIyGV/view?usp=sharing";
 
   const navigateToResume = () => {
     window.open(driveLink, "_blank");

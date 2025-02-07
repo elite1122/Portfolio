@@ -5,7 +5,7 @@ import Type from "../Other/Type";
 const Banner = () => {
     const contactRef = useRef(null);
 
-    const driveLink = "https://drive.google.com/file/d/1OzuOrRm0Rn9g7xwO6RUO9zUZHkvxFjtr/view?usp=drivesdk";
+    const driveLink ="https://drive.google.com/file/d/1JXEV3uQdJ7-VjIY0-wXCF9iLU5dfIyGV/view?usp=sharing";
     const navigateToResume = () => {
         window.open(driveLink, "_blank");
     };
