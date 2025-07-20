@@ -126,18 +126,18 @@ const Skills = () => {
         </div>
 
         {/* Skill Categories */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12 lg:mb-16">
           {categories.map((category, index) => (
             <div 
               key={category.title}
-              className="glass-card p-6 text-center hover:scale-105 transition-all duration-300"
+              className="glass-card p-4 lg:p-6 text-center hover:scale-105 transition-all duration-300"
               style={{animationDelay: `${index * 200}ms`}}
             >
-              <div className="text-4xl mb-4">{category.icon}</div>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">{category.title}</h3>
-              <div className="space-y-2">
+              <div className="text-3xl lg:text-4xl mb-3 lg:mb-4">{category.icon}</div>
+              <h3 className="text-lg lg:text-xl font-bold text-slate-100 mb-3 lg:mb-4">{category.title}</h3>
+              <div className="space-y-1 lg:space-y-2">
                 {category.skills.map((skill, i) => (
-                  <div key={skill} className="text-slate-400 font-medium">
+                  <div key={skill} className="text-slate-400 font-medium text-sm lg:text-base">
                     {skill}
                   </div>
                 ))}
@@ -147,17 +147,17 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
           {skills.map((skill, index) => (
             <div
               key={skill.name}
-              className="glass-card p-6 text-center group hover:scale-105 transition-all duration-300"
+              className="glass-card p-4 lg:p-6 text-center group hover:scale-105 transition-all duration-300"
               style={{animationDelay: `${index * 100}ms`}}
             >
-              <div className="relative mb-6">
+              <div className="relative mb-4 lg:mb-6">
                 {/* Circular Progress */}
-                <div className="relative w-24 h-24 mx-auto">
-                  <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <div className="relative w-16 h-16 lg:w-24 lg:h-24 mx-auto">
+                  <svg className="w-16 h-16 lg:w-24 lg:h-24 transform -rotate-90" viewBox="0 0 100 100">
                     {/* Background circle */}
                     <circle 
                       cx="50" 
@@ -192,31 +192,31 @@ const Skills = () => {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <ion-icon 
                       name={skill.logo}
-                      class="text-3xl text-slate-300 group-hover:text-cyan-400 transition-colors duration-300"
+                      class="text-xl lg:text-3xl text-slate-300 group-hover:text-cyan-400 transition-colors duration-300"
                     ></ion-icon>
                   </div>
                 </div>
 
                 {/* Percentage */}
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                  <span className="text-sm font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
+                <div className="absolute -bottom-1 lg:-bottom-2 left-1/2 transform -translate-x-1/2">
+                  <span className="text-xs lg:text-sm font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
                     {animatedCounts[index] || 0}%
                   </span>
                 </div>
               </div>
 
-              <h3 className="text-lg font-bold text-slate-100 mb-2">{skill.name}</h3>
-              <p className="text-slate-400 text-sm">{skill.level}</p>
+              <h3 className="text-sm lg:text-lg font-bold text-slate-100 mb-1 lg:mb-2">{skill.name}</h3>
+              <p className="text-slate-400 text-xs lg:text-sm">{skill.level}</p>
             </div>
           ))}
         </div>
 
         {/* Additional Skills */}
-        <div className="mt-16 glass-card p-8">
-          <h3 className="text-2xl font-bold text-slate-100 text-center mb-8">
+        <div className="mt-12 lg:mt-16 glass-card p-6 lg:p-8">
+          <h3 className="text-xl lg:text-2xl font-bold text-slate-100 text-center mb-6 lg:mb-8">
             Additional Expertise
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
             {[
               "Responsive Design",
               "RESTful APIs", 
@@ -229,11 +229,11 @@ const Skills = () => {
             ].map((skill, index) => (
               <div 
                 key={skill}
-                className="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/10 hover:border-cyan-500/30 transition-all duration-300"
+                className="flex items-center gap-2 lg:gap-3 p-2 lg:p-3 bg-white/5 rounded-lg border border-white/10 hover:border-cyan-500/30 transition-all duration-300"
                 style={{animationDelay: `${index * 50}ms`}}
               >
-                <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
-                <span className="text-slate-300 font-medium text-sm">{skill}</span>
+                <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex-shrink-0"></div>
+                <span className="text-slate-300 font-medium text-xs lg:text-sm">{skill}</span>
               </div>
             ))}
           </div>
