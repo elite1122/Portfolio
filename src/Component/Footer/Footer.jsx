@@ -1,22 +1,134 @@
 import React from 'react';
+import { Link } from "react-scroll";
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+    
+    const quickLinks = [
+        { name: "Home", to: "home" },
+        { name: "About", to: "about" },
+        { name: "Skills", to: "skills" },
+        { name: "Projects", to: "projects" },
+        { name: "Contact", to: "contact" }
+    ];
+
+    const socialLinks = [
+        { icon: "logo-github", link: "https://github.com/elite1122", label: "GitHub" },
+        { icon: "logo-linkedin", link: "https://www.linkedin.com/in/rzelite/", label: "LinkedIn" },
+        { icon: "logo-twitter", link: "https://x.com/rz_elite_", label: "Twitter" },
+        { icon: "logo-instagram", link: "https://www.instagram.com/_rz.elite_/", label: "Instagram" }
+    ];
+
     return (
-        <footer className="footer text-neutral-content items-center justify-center pb-12">
-            <aside className="grid-flow-col items-center">
-                <svg
-                    width="36"
-                    height="36"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    className="fill-current">
-                    <path
-                        d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
-                </svg>
-                <p>Copyright © {new Date().getFullYear()} - All right reserved by Md. Rasheduzzaman Elite</p>
-            </aside>
+        <footer className="relative mt-20">
+            {/* Gradient separator */}
+            <div className="h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent mb-16"></div>
+            
+            <div className="section-container">
+                <div className="grid md:grid-cols-4 gap-12 mb-12">
+                    {/* Brand Section */}
+                    <div className="md:col-span-2 space-y-4">
+                        <Link
+                            to="home"
+                            smooth={true}
+                            duration={500}
+                            className="cursor-pointer group inline-block"
+                        >
+                            <span className="text-3xl font-bold gradient-text">ELITE</span>
+                        </Link>
+                        <p className="text-slate-300 leading-relaxed max-w-md">
+                            Passionate full-stack developer creating exceptional digital experiences 
+                            through innovative web development and clean, efficient code.
+                        </p>
+                        <div className="flex gap-4">
+                            {socialLinks.map((social) => (
+                                <a
+                                    key={social.label}
+                                    href={social.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:bg-cyan-500/20 hover:border-cyan-500/30 transition-all duration-300 group"
+                                    aria-label={social.label}
+                                >
+                                    <ion-icon 
+                                        name={social.icon} 
+                                        class="text-lg text-slate-400 group-hover:text-cyan-400 transition-colors duration-300"
+                                    ></ion-icon>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-semibold text-slate-100">Quick Links</h3>
+                        <div className="space-y-3">
+                            {quickLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    to={link.to}
+                                    smooth={true}
+                                    duration={500}
+                                    className="block text-slate-400 hover:text-cyan-400 transition-colors duration-300 cursor-pointer"
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Contact Info */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-semibold text-slate-100">Get In Touch</h3>
+                        <div className="space-y-3">
+                            <a 
+                                href="mailto:rasheduzzamanelite@gmail.com"
+                                className="flex items-center gap-3 text-slate-400 hover:text-cyan-400 transition-colors duration-300"
+                            >
+                                <ion-icon name="mail" class="text-lg"></ion-icon>
+                                <span className="text-sm">rasheduzzamanelite@gmail.com</span>
+                            </a>
+                            <a 
+                                href="tel:+8801755926275"
+                                className="flex items-center gap-3 text-slate-400 hover:text-cyan-400 transition-colors duration-300"
+                            >
+                                <ion-icon name="call" class="text-lg"></ion-icon>
+                                <span className="text-sm">+880 1755 926275</span>
+                            </a>
+                            <div className="flex items-center gap-3 text-slate-400">
+                                <ion-icon name="location" class="text-lg"></ion-icon>
+                                <span className="text-sm">Jhenaidah, Bangladesh</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom Section */}
+                <div className="border-t border-white/10 pt-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div className="flex items-center gap-2 text-slate-400 text-sm">
+                            <span>© {currentYear} Elite Portfolio. All rights reserved.</span>
+                        </div>
+                        
+                        <div className="flex items-center gap-6 text-sm text-slate-400">
+                            <span className="flex items-center gap-2">
+                                <span>Made with</span>
+                                <span className="text-red-400 animate-pulse">❤️</span>
+                                <span>using React & Tailwind CSS</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Decorative elements */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+            </div>
+
+            {/* Background decoration */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
+            </div>
         </footer>
     );
 };
