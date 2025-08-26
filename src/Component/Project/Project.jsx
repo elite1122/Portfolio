@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import projectOne from "../../assets/Project1.png";
 import projectTwo from "../../assets/project2.png";
 import projectThree from "../../assets/project3.png";
+import projectFour from "../../assets/project4.png";
 
 const Project = () => {
     const [selectedProject, setSelectedProject] = useState(null);
@@ -26,6 +27,20 @@ const Project = () => {
     }, []);
 
     const projects = [
+        {
+            img: projectFour,
+            name: "Insightly - Data Visualization Dashboard",
+            techStack: ["React", "Node.js", "Express.js", "MongoDB", "Chart.js", "TailwindCSS", "JWT", "Stripe"],
+            description:
+                "Insightly is a comprehensive data visualization and analytics platform that transforms complex datasets into interactive, insightful dashboards. Built with the MERN stack, it features real-time data processing, customizable charts, user authentication, and subscription-based access to premium analytics features.",
+            challenges:
+                "Faced significant challenges with real-time data synchronization across multiple chart components and implementing complex data filtering algorithms. Performance optimization for large datasets required implementing virtual scrolling and data pagination. Integrating secure payment processing with Stripe while maintaining seamless user experience was particularly challenging.",
+            improvements:
+                "Future enhancements include AI-powered data insights, advanced export capabilities (PDF, Excel), collaborative dashboard sharing, real-time collaboration features, mobile app development, and integration with popular data sources like Google Analytics, SQL databases, and REST APIs.",
+            github_link: "https://github.com/elite1122/Insightly-Client",
+            live_link: "https://insightly-facts.web.app/",
+            category: "Full Stack"
+        },
         {
             img: projectOne,
             name: "Winter Cloth Donation Website",
