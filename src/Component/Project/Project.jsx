@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import projectOne from "../../assets/Project1.png";
 import projectTwo from "../../assets/project2.png";
 import projectThree from "../../assets/project3.png";
-import projectFour from "../../assets/project4.png";
+import projectFour from "../../assets/Project4.png";
 
 const Project = () => {
     const [selectedProject, setSelectedProject] = useState(null);
