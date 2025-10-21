@@ -20,9 +20,9 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="relative mt-20">
+        <footer className="relative mt-20 bg-gradient-to-b from-transparent to-black/40 text-gray-300">
             {/* Gradient separator */}
-            <div className="h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent mb-16"></div>
+            <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent mb-16"></div>
             
             <div className="section-container">
                 <div className="grid md:grid-cols-4 gap-12 mb-12">
@@ -34,9 +34,9 @@ const Footer = () => {
                             duration={500}
                             className="cursor-pointer group inline-block"
                         >
-                            <span className="text-3xl font-bold gradient-text">ELITE</span>
+                            <span className="text-3xl font-bold gradient-text animate-pulse-slow">ELITE</span>
                         </Link>
-                        <p className="text-slate-300 leading-relaxed max-w-md">
+                        <p className="text-gray-400 leading-relaxed max-w-md font-medium">
                             Passionate full-stack developer creating exceptional digital experiences 
                             through innovative web development and clean, efficient code.
                         </p>
@@ -47,12 +47,12 @@ const Footer = () => {
                                     href={social.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:bg-cyan-500/20 hover:border-cyan-500/30 transition-all duration-300 group"
+                                    className="w-10 h-10 bg-gray-900/50 border border-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-800/60 hover:border-cyan-400/30 transition-all duration-300 group shadow-sm hover:shadow-md"
                                     aria-label={social.label}
                                 >
                                     <ion-icon 
                                         name={social.icon} 
-                                        class="text-lg text-slate-400 group-hover:text-cyan-400 transition-colors duration-300"
+                                        className="text-lg text-gray-300 group-hover:text-cyan-400 transition-colors duration-300"
                                     ></ion-icon>
                                 </a>
                             ))}
@@ -61,7 +61,7 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-slate-100">Quick Links</h3>
+                        <h3 className="text-lg font-bold text-gray-100">Quick Links</h3>
                         <div className="space-y-3">
                             {quickLinks.map((link) => (
                                 <Link
@@ -69,7 +69,7 @@ const Footer = () => {
                                     to={link.to}
                                     smooth={true}
                                     duration={500}
-                                    className="block text-slate-400 hover:text-cyan-400 transition-colors duration-300 cursor-pointer"
+                                    className="block text-gray-300 hover:text-cyan-400 transition-colors duration-300 cursor-pointer font-medium"
                                 >
                                     {link.name}
                                 </Link>
@@ -79,41 +79,41 @@ const Footer = () => {
 
                     {/* Contact Info */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-slate-100">Get In Touch</h3>
+                        <h3 className="text-lg font-bold text-gray-100">Get In Touch</h3>
                         <div className="space-y-3">
                             <a 
                                 href="mailto:rasheduzzamanelite@gmail.com"
-                                className="flex items-center gap-3 text-slate-400 hover:text-cyan-400 transition-colors duration-300"
+                                className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300 group"
                             >
-                                <ion-icon name="mail" class="text-lg"></ion-icon>
-                                <span className="text-sm">rasheduzzamanelite@gmail.com</span>
+                                <ion-icon name="mail" className="text-lg group-hover:animate-wiggle text-gray-300"></ion-icon>
+                                <span className="text-sm font-medium text-gray-300">rasheduzzamanelite@gmail.com</span>
                             </a>
                             <a 
                                 href="tel:+8801755926275"
-                                className="flex items-center gap-3 text-slate-400 hover:text-cyan-400 transition-colors duration-300"
+                                className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300 group"
                             >
-                                <ion-icon name="call" class="text-lg"></ion-icon>
-                                <span className="text-sm">+880 1755 926275</span>
+                                <ion-icon name="call" className="text-lg group-hover:animate-wiggle text-gray-300"></ion-icon>
+                                <span className="text-sm font-medium text-gray-300">+880 1755 926275</span>
                             </a>
-                            <div className="flex items-center gap-3 text-slate-400">
-                                <ion-icon name="location" class="text-lg"></ion-icon>
-                                <span className="text-sm">Jhenaidah, Bangladesh</span>
+                            <div className="flex items-center gap-3 text-gray-300">
+                                <ion-icon name="location" className="text-lg text-gray-300"></ion-icon>
+                                <span className="text-sm font-medium text-gray-300">Jhenaidah, Bangladesh</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Section */}
-                <div className="border-t border-white/10 pt-8">
+                <div className="border-t border-gray-800 pt-8">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div className="flex items-center gap-2 text-slate-400 text-sm">
+                        <div className="flex items-center gap-2 text-gray-400 text-sm font-medium">
                             <span>© {currentYear} Elite Portfolio. All rights reserved.</span>
                         </div>
                         
-                        <div className="flex items-center gap-6 text-sm text-slate-400">
+                        <div className="flex items-center gap-6 text-sm text-gray-400 font-medium">
                             <span className="flex items-center gap-2">
                                 <span>Made with</span>
-                                <span className="text-red-400 animate-pulse">❤️</span>
+                                <span className="text-red-500 animate-pulse">❤️</span>
                                 <span>using React & Tailwind CSS</span>
                             </span>
                         </div>
@@ -126,8 +126,8 @@ const Footer = () => {
 
             {/* Background decoration */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl"></div>
             </div>
         </footer>
     );

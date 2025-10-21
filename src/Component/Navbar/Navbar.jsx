@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-800' 
+        ? 'bg-gray-900/95 backdrop-blur-md shadow-xl shadow-cyan-500/10 border-b border-gray-800' 
         : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +45,7 @@ const Navbar = () => {
               duration={500}
               className="cursor-pointer group"
             >
-              <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:from-cyan-300 hover:to-blue-400 transition-all duration-300">
+              <span className="text-2xl font-bold font-heading tracking-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 animate-pulse-slow">
                 ELITE
               </span>
             </Link>
@@ -60,7 +60,7 @@ const Navbar = () => {
                   to={item.to}
                   smooth={true}
                   duration={500}
-                  className="text-gray-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer hover:bg-gray-800/50 relative group"
+                  className="text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-lg text-sm font-display font-semibold tracking-wide transition-all duration-300 cursor-pointer hover:bg-gray-800/50 relative group"
                 >
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300"></span>
@@ -73,7 +73,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <button
               onClick={navigateToResume}
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-cyan-500/25"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-2.5 rounded-full text-sm font-display font-bold tracking-wide transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg shadow-cyan-500/50"
             >
               Download CV
             </button>
@@ -83,7 +83,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-300 hover:text-white hover:bg-gray-800/50 p-2 rounded-lg transition-all duration-300"
+              className="text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 p-2 rounded-lg transition-all duration-300"
             >
               <svg
                 className={`h-6 w-6 transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-90' : ''}`}
@@ -108,7 +108,7 @@ const Navbar = () => {
           ? 'max-h-96 opacity-100' 
           : 'max-h-0 opacity-0'
       } overflow-hidden`}>
-        <div className="px-4 pt-2 pb-4 space-y-1 bg-gray-900/95 backdrop-blur-md border-t border-gray-800">
+        <div className="px-4 pt-2 pb-4 space-y-1 bg-gray-900/95 backdrop-blur-md border-t border-gray-800 shadow-lg shadow-cyan-500/10">
           {navItems.map((item) => (
             <Link
               key={item.name}
@@ -116,7 +116,7 @@ const Navbar = () => {
               smooth={true}
               duration={500}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-gray-300 hover:text-white hover:bg-gray-800/50 block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 cursor-pointer"
+              className="text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 block px-4 py-3 rounded-lg text-base font-display font-semibold tracking-wide transition-all duration-300 cursor-pointer"
             >
               {item.name}
             </Link>
@@ -127,7 +127,7 @@ const Navbar = () => {
                 navigateToResume();
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300"
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-4 py-3 rounded-lg text-base font-display font-bold tracking-wide transition-all duration-300 shadow-lg shadow-cyan-500/50"
             >
               Download CV
             </button>

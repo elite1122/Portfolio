@@ -78,7 +78,7 @@ const Education = () => {
         {/* Education Timeline */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-purple-500 to-emerald-500 transform md:-translate-x-1/2"></div>
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/60 via-purple-500/60 to-emerald-500/60 transform md:-translate-x-1/2"></div>
 
           <div className="space-y-8 lg:space-y-12">
             {educationDetails.map((edu, index) => (
@@ -86,35 +86,35 @@ const Education = () => {
                 key={index} 
                 className={`relative flex items-center ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } flex-col md:gap-16`}
+                } flex-col md:gap-16 animate-fade-in`}
                 style={{animationDelay: `${index * 300}ms`}}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-4 md:left-1/2 w-3 h-3 lg:w-4 lg:h-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full transform md:-translate-x-1/2 border-2 lg:border-4 border-slate-900 z-10">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full animate-pulse"></div>
+                <div className="absolute left-4 md:left-1/2 w-3 h-3 lg:w-4 lg:h-4 bg-gradient-to-r from-cyan-400/70 to-blue-500/70 rounded-full transform md:-translate-x-1/2 border border-gray-800 z-10 shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/50 to-blue-500/40 rounded-full animate-pulse"></div>
                 </div>
 
                 {/* Content */}
                 <div className={`w-full md:w-5/12 ml-8 lg:ml-12 md:ml-0 ${
                   index % 2 === 0 ? 'md:text-right' : 'md:text-left'
                 }`}>
-                  <div className="glass-card p-4 lg:p-8 hover:scale-105 transition-all duration-300 group">
+                  <div className="glass-card p-4 lg:p-8 hover:scale-105 hover:shadow-2xl transition-all duration-300 group">
                     {/* Header */}
                     <div className="flex items-start gap-3 lg:gap-4 mb-4 lg:mb-6">
-                      <div className="text-2xl lg:text-4xl">{edu.icon}</div>
+                      <div className="text-2xl lg:text-4xl animate-bounce">{edu.icon}</div>
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center gap-1 lg:gap-2 mb-2">
-                          <span className={`px-2 lg:px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${edu.color} text-white`}>
+                          <span className={`px-2 lg:px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${edu.color} text-white shadow-md`}>
                             {edu.level}
                           </span>
-                          <span className="text-slate-400 text-xs lg:text-sm font-medium">
+                          <span className="text-gray-300 text-xs lg:text-sm font-semibold">
                             {edu.year}
                           </span>
                         </div>
-                        <h3 className="text-lg lg:text-xl font-bold text-slate-100 mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+                        <h3 className="text-lg lg:text-xl font-bold text-gray-100 mb-2 group-hover:text-cyan-400 transition-colors duration-300">
                           {edu.degree}
                         </h3>
-                        <p className="text-cyan-400 font-semibold mb-3 lg:mb-4 text-sm lg:text-base">
+                        <p className="text-cyan-300 font-bold mb-3 lg:mb-4 text-sm lg:text-base">
                           {edu.institution}
                         </p>
                       </div>
@@ -122,12 +122,12 @@ const Education = () => {
 
                     {/* Grade */}
                     <div className="flex items-center gap-2 lg:gap-3 mb-3 lg:mb-4">
-                      <div className="w-2 h-2 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full"></div>
-                      <span className="text-emerald-400 font-semibold text-sm lg:text-base">{edu.grades}</span>
+                      <div className="w-2 h-2 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full animate-pulse"></div>
+                      <span className="text-emerald-300 font-bold text-sm lg:text-base">{edu.grades}</span>
                     </div>
 
                     {/* Description */}
-                    <p className="text-slate-300 leading-relaxed text-sm lg:text-base">
+                    <p className="text-gray-300 leading-relaxed text-sm lg:text-base">
                       {edu.desc}
                     </p>
                   </div>
@@ -142,29 +142,29 @@ const Education = () => {
 
         {/* Achievements Section */}
         <div className="mt-16 lg:mt-20">
-          <h3 className="text-2xl lg:text-3xl font-bold text-center text-slate-100 mb-8 lg:mb-12">
+          <h3 className="text-2xl lg:text-3xl font-bold text-center text-gray-100 mb-8 lg:mb-12">
             Academic <span className="gradient-text">Achievements</span>
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {achievements.map((achievement, index) => (
               <div 
                 key={achievement.title}
-                className="glass-card p-4 lg:p-6 text-center hover:scale-105 transition-all duration-300 group"
+                className="glass-card p-4 lg:p-6 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300 group animate-scale-in"
                 style={{animationDelay: `${index * 150}ms`}}
               >
-                <div className="text-2xl lg:text-3xl mb-3 lg:mb-4">{achievement.icon}</div>
-                <h4 className="text-base lg:text-lg font-bold text-slate-100 mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+                <div className="text-2xl lg:text-3xl mb-3 lg:mb-4 animate-bounce">{achievement.icon}</div>
+                <h4 className="text-base lg:text-lg font-bold text-gray-100 mb-2 group-hover:text-cyan-400 transition-colors duration-300">
                   {achievement.title}
                 </h4>
-                <p className="text-slate-400 text-xs lg:text-sm">{achievement.desc}</p>
+                <p className="text-gray-300 text-xs lg:text-sm font-medium">{achievement.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Skills Developed */}
-        <div className="mt-12 lg:mt-16 glass-card p-6 lg:p-8">
-          <h3 className="text-xl lg:text-2xl font-bold text-slate-100 text-center mb-6 lg:mb-8">
+        <div className="mt-12 lg:mt-16 glass-card p-6 lg:p-8 hover:shadow-2xl transition-all duration-500">
+          <h3 className="text-xl lg:text-2xl font-bold text-gray-100 text-center mb-6 lg:mb-8">
             Skills Developed Through Education
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
@@ -180,11 +180,11 @@ const Education = () => {
             ].map((skill, index) => (
               <div 
                 key={skill}
-                className="flex items-center gap-2 lg:gap-3 p-2 lg:p-3 bg-white/5 rounded-lg border border-white/10 hover:border-cyan-500/30 transition-all duration-300"
+                className="flex items-center gap-2 lg:gap-3 p-2 lg:p-3 bg-gray-900/40 rounded-lg border border-gray-800 hover:border-cyan-600/30 hover:shadow-md transition-all duration-300 transform hover:scale-105"
                 style={{animationDelay: `${index * 75}ms`}}
               >
-                <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex-shrink-0"></div>
-                <span className="text-slate-300 font-medium text-xs lg:text-sm">{skill}</span>
+                <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex-shrink-0 animate-pulse"></div>
+                <span className="text-gray-300 font-semibold text-xs lg:text-sm">{skill}</span>
               </div>
             ))}
           </div>

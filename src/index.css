@@ -9,21 +9,21 @@
   
   body {
     font-feature-settings: 'cv01', 'cv03', 'cv04', 'cv11';
-    background: linear-gradient(135deg, #0a0e1a 0%, #1a1f35 100%);
-    color: #f8fafc;
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #111111 100%);
+    color: #e5e7eb;
   }
 
   :root {
     --color-primary: #06b6d4;
     --color-secondary: #8b5cf6;
     --color-accent: #10b981;
-    --color-background: #0a0e1a;
-    --color-surface: #1a1f35;
-    --color-surface-light: #2d3349;
-    --color-text: #f8fafc;
-    --color-text-muted: #94a3b8;
-    --color-text-light: #cbd5e1;
-    --color-border: #334155;
+    --color-background: #000000;
+    --color-surface: #0a0a0a;
+    --color-surface-light: #1a1a1a;
+    --color-text: #e5e7eb;
+    --color-text-muted: #9ca3af;
+    --color-text-light: #d1d5db;
+    --color-border: #1f2937;
     --color-error: #ef4444;
     --color-warning: #f59e0b;
     --color-success: #10b981;
@@ -32,19 +32,19 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+    @apply bg-gray-900/50 backdrop-blur-lg border border-gray-700/50 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent;
   }
   
   .gradient-button {
-    @apply bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl;
+    @apply bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg shadow-cyan-500/30;
   }
   
   .outline-button {
-    @apply border-2 border-cyan-500 text-cyan-400 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300 transform hover:scale-105;
+    @apply border-2 border-cyan-500 text-cyan-400 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg hover:shadow-cyan-500/30;
   }
   
   .section-container {
@@ -52,11 +52,11 @@
   }
   
   .section-title {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4;
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4 text-gray-100;
   }
   
   .section-subtitle {
-    @apply text-base sm:text-lg lg:text-xl text-slate-400 text-center mb-12 sm:mb-16 max-w-3xl mx-auto px-4;
+    @apply text-base sm:text-lg lg:text-xl text-gray-400 text-center mb-12 sm:mb-16 max-w-3xl mx-auto px-4;
   }
 }
 
@@ -84,6 +84,26 @@
   .animate-bounce-slow {
     animation: bounce 3s ease-in-out infinite;
   }
+
+  .animate-scale-in {
+    animation: scaleIn 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }
 
 @keyframes float {
@@ -95,12 +115,42 @@
   }
 }
 
+/* Ensure ion-icon inherits text color so icons remain visible on light backgrounds */
+ion-icon {
+  color: inherit;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: inherit;
+  line-height: 1;
+}
+
+/* Add shimmer effect for skill cards */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(6, 182, 212, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
 @keyframes glow {
   from {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.3), 0 10px 40px rgba(6, 182, 212, 0.2);
   }
   to {
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8);
+    box-shadow: 0 0 50px rgba(6, 182, 212, 0.5), 0 15px 60px rgba(6, 182, 212, 0.3);
   }
 }
 
@@ -126,21 +176,64 @@
   }
 }
 
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
-  border-radius: 4px;
+  background: linear-gradient(to bottom, #06b6d4, #8b5cf6);
+  border-radius: 10px;
+  border: 2px solid #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, var(--color-secondary), var(--color-accent));
+  background: linear-gradient(to bottom, #0891b2, #7c3aed);
 }
 
