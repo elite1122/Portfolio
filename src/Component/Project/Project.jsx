@@ -68,67 +68,43 @@ const Project = () => {
 
       {/* FLAGSHIP FEATURED SYSTEM: CogniDrift (Shown when "All" or "AI & Automation" is active) */}
       {(activeCategory === "All" || activeCategory === "AI & Automation") && flagship && (
-        <MotionReveal delay={0.1} className="mb-12 sm:mb-16">
-          <div className="editorial-card !p-0 overflow-hidden border-obsidian-700 hover:border-lime-accent/40 transition-colors shadow-2xl">
-            <div className="grid lg:grid-cols-12 items-stretch">
-              {/* Left Column: Deep Technical Narrative (7 cols) */}
-              <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                <div>
-                  <div className="flex flex-wrap items-center gap-2 mb-3">
+        <MotionReveal delay={0.1} className="mb-14 sm:mb-20">
+          <div className="editorial-card !p-0 overflow-hidden border-obsidian-700 hover:border-lime-accent/40 transition-colors shadow-2xl bg-obsidian-900/60">
+            {/* Top Identity & Action Header */}
+            <div className="p-6 sm:p-8 lg:p-10 border-b border-obsidian-800">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div className="space-y-3 max-w-3xl">
+                  <div className="flex flex-wrap items-center gap-2.5">
                     <span className="editorial-badge-lime !text-[11px]">
                       FLAGSHIP AI PLATFORM
                     </span>
-                    <span className="font-mono text-[11px] text-ivory-500">
+                    <span className="font-mono text-xs text-ivory-500">
                       {flagship.period}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-lime-accent/10 border border-lime-accent/30 font-mono text-[11px] text-lime-accent">
+                      <span className="w-1.5 h-1.5 rounded-full bg-lime-accent animate-pulse"></span>
+                      PRODUCTION PLATFORM
                     </span>
                   </div>
 
                   <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-ivory-100 tracking-tight">
                     {flagship.name}
                   </h3>
-                  <p className="font-mono text-xs text-lime-accent mt-1">
+                  <p className="font-mono text-xs sm:text-sm text-lime-accent font-medium">
                     {flagship.tagline}
                   </p>
-
-                  <p className="font-sans text-sm sm:text-base text-ivory-400 leading-relaxed mt-4">
+                  <p className="font-sans text-sm sm:text-base text-ivory-400 leading-relaxed pt-1">
                     {flagship.description}
                   </p>
-
-                  {/* Architecture Capability Highlights */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6 border-t border-obsidian-800 my-6">
-                    {flagship.architecturePoints?.map((pt) => (
-                      <div
-                        key={pt.title}
-                        className="p-3 rounded-lg bg-obsidian-900 border border-obsidian-800"
-                      >
-                        <div className="font-mono text-xs text-ivory-200 font-semibold flex items-center gap-1.5">
-                          <span className="w-1 h-1 rounded-full bg-lime-accent"></span>
-                          {pt.title}
-                        </div>
-                        <div className="font-sans text-xs text-ivory-400 mt-0.5">
-                          {pt.desc}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Tech Stack Chips */}
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {flagship.techStack.map((tech) => (
-                      <span key={tech} className="editorial-badge">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
                 {/* Primary Flagship Actions */}
-                <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-obsidian-800">
+                <div className="flex sm:flex-col lg:flex-row items-center gap-3 shrink-0">
                   <button
                     onClick={() => setSelectedProject(flagship)}
-                    className="editorial-btn-primary !py-2.5 !px-5 text-xs font-mono"
+                    className="editorial-btn-primary !py-2.5 !px-5 text-xs font-mono w-full sm:w-auto"
                   >
-                    <span>View Architecture &amp; Details</span>
+                    <span>System Architecture</span>
                     <svg
                       className="w-3.5 h-3.5"
                       fill="none"
@@ -148,9 +124,9 @@ const Project = () => {
                     href={flagship.live_link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="editorial-btn-secondary !py-2.5 !px-5 text-xs font-mono"
+                    className="editorial-btn-secondary !py-2.5 !px-5 text-xs font-mono w-full sm:w-auto"
                   >
-                    <span>Launch Live Platform</span>
+                    <span>Launch Live Site</span>
                     <svg
                       className="w-3.5 h-3.5"
                       fill="none"
@@ -167,31 +143,104 @@ const Project = () => {
                   </a>
                 </div>
               </div>
+            </div>
 
-              {/* Right Column: Architectural Visual Frame (5 cols) */}
-              <div className="lg:col-span-5 bg-obsidian-900 border-t lg:border-t-0 lg:border-l border-obsidian-800 flex flex-col">
-                <div className="px-4 py-2.5 bg-obsidian-950 border-b border-obsidian-800 flex items-center justify-between font-mono text-[11px] text-ivory-400">
+            {/* Expansive Full-Width Browser Mockup Viewport */}
+            <div className="bg-obsidian-950 p-3 sm:p-6 lg:p-8 border-b border-obsidian-800">
+              <div className="rounded-xl overflow-hidden border border-obsidian-700/90 shadow-2xl bg-obsidian-900 group">
+                {/* Browser Window Header Chrome */}
+                <div className="px-4 py-3 bg-obsidian-950 border-b border-obsidian-800 flex items-center justify-between font-mono text-xs text-ivory-400">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-lime-accent"></span>
-                    <span>COGNIDRIFT // FRONT_OFFICE</span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-lime-accent/80 inline-block"></span>
+                    <span className="ml-2 font-mono text-[11px] text-ivory-500 hidden sm:inline-block">
+                      CogniDrift OS · Voice &amp; Scheduling Platform
+                    </span>
                   </div>
-                  <span className="text-lime-accent text-[10px]">200 OK</span>
+
+                  {/* Centered URL Address Pill */}
+                  <div className="px-4 py-1 rounded-md bg-obsidian-900 border border-obsidian-800 text-[11px] text-ivory-300 font-mono flex items-center gap-1.5 truncate max-w-[200px] sm:max-w-xs">
+                    <svg
+                      className="w-3 h-3 text-lime-accent shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+                      />
+                    </svg>
+                    <span className="truncate">https://cognidrift.com</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-[11px] text-lime-accent">
+                    <span className="w-1.5 h-1.5 rounded-full bg-lime-accent animate-ping"></span>
+                    <span>200 OK</span>
+                  </div>
                 </div>
 
-                <div className="relative flex-1 min-h-[260px] sm:min-h-[340px] bg-obsidian-950 overflow-hidden group">
+                {/* Wide Screenshot Display */}
+                <div
+                  className="relative aspect-[16/9] lg:aspect-[21/10] bg-obsidian-950 overflow-hidden cursor-pointer"
+                  onClick={() => setSelectedProject(flagship)}
+                >
                   <img
                     src={flagship.img}
-                    alt="CogniDrift Autonomous AI Receptionist Platform Architecture and Interface"
+                    alt="CogniDrift Autonomous AI Receptionist Platform Interface"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.015]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-transparent to-transparent opacity-40"></div>
+                  {/* Subtle blend gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/40 via-transparent to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Architecture Highlights & Technology Grid */}
+            <div className="p-6 sm:p-8 lg:p-10 bg-obsidian-900/40 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              {/* Left: 4 Architecture Capability Cards (8 cols) */}
+              <div className="lg:col-span-8 space-y-4">
+                <div className="font-mono text-xs uppercase tracking-wider text-ivory-300 font-semibold flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+                  <span>Core Engineering &amp; Architectural Modules</span>
                 </div>
 
-                <div className="p-4 bg-obsidian-900 border-t border-obsidian-800 font-mono text-[11px] text-ivory-400 flex items-center justify-between">
-                  <span>URL: cognidrift.com</span>
-                  <span className="text-ivory-500">VOICE + SMS + CALENDAR</span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  {flagship.architecturePoints?.map((pt) => (
+                    <div
+                      key={pt.title}
+                      className="p-4 rounded-lg bg-obsidian-950/80 border border-obsidian-800 hover:border-obsidian-700 transition-colors"
+                    >
+                      <div className="font-mono text-xs text-lime-accent font-semibold flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+                        {pt.title}
+                      </div>
+                      <p className="font-sans text-xs text-ivory-400 mt-1.5 leading-relaxed">
+                        {pt.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: Production Tech Stack Chips (4 cols) */}
+              <div className="lg:col-span-4 space-y-4">
+                <div className="font-mono text-xs uppercase tracking-wider text-ivory-300 font-semibold flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+                  <span>Production Technology Stack</span>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {flagship.techStack.map((tech) => (
+                    <span key={tech} className="editorial-badge text-xs">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
