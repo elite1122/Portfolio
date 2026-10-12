@@ -214,10 +214,12 @@ const Project = () => {
       </div>
 
       {/* REUSABLE TECHNICAL SYSTEM MODAL */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </section>
   );
 };

@@ -2,11 +2,12 @@ import projectOne from "../assets/Project1.png";
 import projectTwo from "../assets/project2.png";
 import projectThree from "../assets/project3.png";
 import projectFour from "../assets/Project4.png";
+import cognidriftImg from "../assets/cognidrift.png";
 
 export const projectsData = [
   {
     id: "cognidrift",
-    img: projectThree,
+    img: cognidriftImg,
     name: "CogniDrift — AI-Powered Receptionist & Communication Platform",
     tagline: "Autonomous Voice AI & Omnichannel Front-Office Infrastructure",
     period: "May 2025 – May 2026",

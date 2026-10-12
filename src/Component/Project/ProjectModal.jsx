@@ -5,6 +5,7 @@ const ProjectModal = ({ project, onClose }) => {
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (!project) return;
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         onClose();
@@ -12,14 +13,15 @@ const ProjectModal = ({ project, onClose }) => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onClose]);
+  }, [project, onClose]);
 
   useEffect(() => {
+    if (!project) return;
     document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     };
-  }, []);
+  }, [project]);
 
   if (!project) return null;
 

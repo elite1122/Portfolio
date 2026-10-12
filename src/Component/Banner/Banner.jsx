@@ -221,7 +221,7 @@ const Banner = () => {
                 <img
                   src={eliteProfile}
                   alt="Md Rasheduzzaman Elite — AI Engineer and Full-Stack Developer"
-                  className="w-full h-full object-cover object-top filter contrast-[1.03] transition-transform duration-500 hover:scale-[1.02]"
+                  className="w-full h-full object-cover object-center filter contrast-[1.02] transition-transform duration-500 hover:scale-[1.02]"
                   loading="eager"
                   fetchPriority="high"
                 />
