@@ -1,272 +1,145 @@
-import React, { useEffect, useState } from 'react';
+import { educationData } from "../../data/educationData";
+import MotionReveal from "../Common/MotionReveal";
 
 const Education = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const section = document.getElementById('education');
-    if (section) observer.observe(section);
-
-    return () => {
-      if (section) observer.unobserve(section);
-    };
-  }, []);
-
-  const educationDetails = [
-    {
-      degree: 'B.Sc. in Computer Science & Engineering',
-      institution: 'Daffodil International University (DIU)',
-      grades: 'CGPA: 3.89 / 4.00',
-      year: '2020 - 2024',
-      desc: "Completed my CSE degree from Daffodil International University, Savar, Dhaka. Gained comprehensive knowledge in software development, algorithms, data structures, and modern web technologies.",
-      icon: '🎓',
-      level: 'Bachelor\'s Degree',
-      color: 'from-cyan-500 to-blue-500'
-    },
-    {
-      degree: 'Higher Secondary School Certificate - HSC',
-      institution: 'K.C. College, Jhenaidah',
-      grades: 'Grade: 5.00',
-      year: '2017-2018',
-      desc: "Completed HSC from K.C. College, Jhenaidah, with a focus on Science subjects. Built a strong foundation in mathematics, physics, and analytical thinking.",
-      icon: '📚',
-      level: 'Higher Secondary',
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      degree: 'Secondary School Certificate - SSC',
-      institution: 'Jhenaidah Govt. High School',
-      grades: 'Grade: 5.00',
-      year: '2015-2016',
-      desc: "Completed SSC from Jhenaidah Govt. High School with excellent grades in Science stream. Developed core academic skills and discipline.",
-      icon: '🏫',
-      level: 'Secondary',
-      color: 'from-emerald-500 to-green-500'
-    },
-  ];
-
-  const achievements = [
-    { title: "CGPA 3.89 / 4.00", desc: "B.Sc. in CSE, Daffodil International University", icon: "🏆" },
-    { title: "Perfect GPA 5.00", desc: "Both HSC and SSC, Science stream", icon: "⭐" },
-    { title: "Programming Hero", desc: "Complete Web Development (Batch 10)", icon: "🎖️" },
-    { title: "Trilingual", desc: "Bangla, English, and Hindi", icon: "🌐" }
-  ];
-
-  const certifications = [
-    {
-      title: 'Complete Web Development (Batch 10)',
-      issuer: 'Programming Hero',
-      period: 'June 2024 — January 2025',
-      mode: 'Online',
-      icon: '🎖️',
-      color: 'from-cyan-500 to-blue-500',
-    },
-  ];
-
-  const languages = [
-    { name: 'Bangla', level: 'Native', icon: '🇧🇩' },
-    { name: 'English', level: 'Reading, Writing & Conversational', icon: '🇬🇧' },
-    { name: 'Hindi', level: 'Conversational', icon: '🇮🇳' },
-  ];
-
   return (
-    <section id='education' className="section-container">
-      <div className={`transform transition-all duration-1000 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-      }`}>
-        <div className="text-center mb-16">
-          <h2 className="section-title">
-            My <span className="gradient-text">Education</span>
+    <section
+      id="education"
+      aria-label="Academic Education and Certifications"
+      className="section-container border-b border-obsidian-700/60 relative"
+    >
+      {/* Section Header */}
+      <MotionReveal>
+        <div className="mb-12 sm:mb-16">
+          <div className="editorial-eyebrow mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+            <span>05 // Academics &amp; Qualifications</span>
+          </div>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory-100 tracking-tight">
+            Academic Foundation &amp; Credentials.
           </h2>
-          <p className="section-subtitle">
-            Academic journey that shaped my technical foundation and passion for learning
+          <p className="font-sans text-sm sm:text-base text-ivory-400 mt-2 max-w-2xl leading-relaxed">
+            Undergraduate degree in Computer Science &amp; Engineering, proven academic consistency,
+            professional certifications, and language capabilities.
           </p>
         </div>
+      </MotionReveal>
 
-        {/* Education Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/60 via-purple-500/60 to-emerald-500/60 transform md:-translate-x-1/2"></div>
+      {/* Degrees Timeline List */}
+      <div className="space-y-6 mb-12 sm:mb-16">
+        {educationData.degrees.map((edu, index) => (
+          <MotionReveal key={edu.degree} delay={index * 0.08}>
+            <div
+              className="editorial-card !p-0 overflow-hidden border-obsidian-700/80 hover:border-obsidian-600 transition-colors shadow-lg"
+            >
+            {/* Header Telemetry Bar */}
+            <div className="px-5 sm:px-6 py-3 bg-obsidian-900 border-b border-obsidian-800 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-ivory-400">
+              <span className="text-lime-accent font-medium">
+                {`DEGREE 0${index + 1} // ${edu.level.toUpperCase()}`}
+              </span>
+              <span className="text-ivory-500">{edu.period}</span>
+            </div>
 
-          <div className="space-y-8 lg:space-y-12">
-            {educationDetails.map((edu, index) => (
-              <div 
-                key={index} 
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } flex-col md:gap-16 animate-fade-in`}
-                style={{animationDelay: `${index * 300}ms`}}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-4 md:left-1/2 w-3 h-3 lg:w-4 lg:h-4 bg-gradient-to-r from-cyan-400/70 to-blue-500/70 rounded-full transform md:-translate-x-1/2 border border-gray-800 z-10 shadow-lg">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/50 to-blue-500/40 rounded-full animate-pulse"></div>
+            {/* Degree Content */}
+            <div className="p-5 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="space-y-2 flex-1">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-ivory-100 tracking-tight">
+                    {edu.degree}
+                  </h3>
+                  <span className="editorial-badge-lime !text-[11px] font-mono">
+                    {edu.grade}
+                  </span>
                 </div>
-
-                {/* Content */}
-                <div className={`w-full md:w-5/12 ml-8 lg:ml-12 md:ml-0 ${
-                  index % 2 === 0 ? 'md:text-right' : 'md:text-left'
-                }`}>
-                  <div className="glass-card p-4 lg:p-8 hover:scale-105 hover:shadow-2xl transition-all duration-300 group">
-                    {/* Header */}
-                    <div className="flex items-start gap-3 lg:gap-4 mb-4 lg:mb-6">
-                      <div className="text-2xl lg:text-4xl animate-bounce">{edu.icon}</div>
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-1 lg:gap-2 mb-2">
-                          <span className={`px-2 lg:px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${edu.color} text-white shadow-md`}>
-                            {edu.level}
-                          </span>
-                          <span className="text-gray-300 text-xs lg:text-sm font-semibold">
-                            {edu.year}
-                          </span>
-                        </div>
-                        <h3 className="text-lg lg:text-xl font-bold text-gray-100 mb-2 group-hover:text-cyan-400 transition-colors duration-300">
-                          {edu.degree}
-                        </h3>
-                        <p className="text-cyan-300 font-bold mb-3 lg:mb-4 text-sm lg:text-base">
-                          {edu.institution}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Grade */}
-                    <div className="flex items-center gap-2 lg:gap-3 mb-3 lg:mb-4">
-                      <div className="w-2 h-2 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full animate-pulse"></div>
-                      <span className="text-emerald-300 font-bold text-sm lg:text-base">{edu.grades}</span>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-gray-300 leading-relaxed text-sm lg:text-base">
-                      {edu.desc}
-                    </p>
-                  </div>
+                <div className="font-mono text-xs text-ivory-300">
+                  {edu.institution}
+                  <span className="text-ivory-500 ml-2">/ {edu.location}</span>
                 </div>
-
-                {/* Empty space for alternating layout */}
-                <div className="hidden md:block w-5/12"></div>
+                <p className="font-sans text-xs sm:text-sm text-ivory-400 leading-relaxed max-w-3xl pt-1">
+                  {edu.description}
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+            </div>
+          </MotionReveal>
+        ))}
+      </div>
 
-        {/* Achievements Section */}
-        <div className="mt-16 lg:mt-20">
-          <h3 className="text-2xl lg:text-3xl font-bold text-center text-gray-100 mb-8 lg:mb-12">
-            Academic <span className="gradient-text">Achievements</span>
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-            {achievements.map((achievement, index) => (
-              <div 
-                key={achievement.title}
-                className="glass-card p-4 lg:p-6 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300 group animate-scale-in"
-                style={{animationDelay: `${index * 150}ms`}}
-              >
-                <div className="text-2xl lg:text-3xl mb-3 lg:mb-4 animate-bounce">{achievement.icon}</div>
-                <h4 className="text-base lg:text-lg font-bold text-gray-100 mb-2 group-hover:text-cyan-400 transition-colors duration-300">
-                  {achievement.title}
-                </h4>
-                <p className="text-gray-300 text-xs lg:text-sm font-medium">{achievement.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Certifications */}
-        <div className="mt-16 lg:mt-20">
-          <h3 className="text-2xl lg:text-3xl font-bold text-center text-gray-100 mb-8 lg:mb-12">
-            <span className="gradient-text">Certifications</span>
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-            {certifications.map((cert, index) => (
-              <div
-                key={cert.title}
-                className="glass-card p-5 lg:p-6 hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 group animate-fade-in"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="text-3xl lg:text-4xl">{cert.icon}</div>
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <span
-                        className={`px-2 lg:px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${cert.color} text-white shadow-md`}
-                      >
-                        {cert.mode}
-                      </span>
-                      <span className="text-gray-300 text-xs lg:text-sm font-semibold">
-                        {cert.period}
-                      </span>
-                    </div>
-                    <h4 className="text-base lg:text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors duration-300">
+      {/* Certifications & Languages Grid */}
+      <MotionReveal delay={0.15}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {/* Certifications Card */}
+        <div className="editorial-card !p-0 overflow-hidden border-obsidian-700/80 flex flex-col justify-between">
+          <div>
+            <div className="px-5 sm:px-6 py-3 bg-obsidian-900 border-b border-obsidian-800 font-mono text-[11px] text-lime-accent uppercase tracking-wider flex items-center justify-between">
+              <span>Verified Certification</span>
+              <span className="text-ivory-500">PROGRAMMING HERO</span>
+            </div>
+            <div className="p-6 space-y-4">
+              {educationData.certifications.map((cert) => (
+                <div key={cert.title} className="space-y-3">
+                  <div>
+                    <h4 className="font-heading text-lg font-bold text-ivory-100">
                       {cert.title}
                     </h4>
-                    <p className="text-cyan-300 font-bold text-sm lg:text-base mt-1">
-                      {cert.issuer}
-                    </p>
+                    <div className="font-mono text-xs text-lime-accent/90 mt-0.5">
+                      {cert.issuer} · <span className="text-ivory-500">{cert.period}</span>
+                    </div>
+                  </div>
+
+                  <div className="font-mono text-[11px] text-ivory-400">
+                    Curriculum Competencies:
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {cert.skills.map((skill) => (
+                      <span key={skill} className="editorial-badge !text-[11px]">
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+          <div className="px-6 py-2.5 bg-obsidian-900/60 border-t border-obsidian-800/80 font-mono text-[10px] text-ivory-500">
+            COMPLETED // CREDENTIAL_VERIFIED
           </div>
         </div>
 
-        {/* Languages */}
-        <div className="mt-16 lg:mt-20">
-          <h3 className="text-2xl lg:text-3xl font-bold text-center text-gray-100 mb-8 lg:mb-12">
-            <span className="gradient-text">Languages</span>
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
-            {languages.map((lang, index) => (
-              <div
-                key={lang.name}
-                className="glass-card p-5 lg:p-6 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300 group animate-scale-in"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="text-3xl lg:text-4xl mb-2">{lang.icon}</div>
-                <h4 className="text-base lg:text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors duration-300">
-                  {lang.name}
-                </h4>
-                <p className="text-gray-300 text-xs lg:text-sm font-medium mt-1">{lang.level}</p>
-              </div>
-            ))}
+        {/* Languages Card */}
+        <div className="editorial-card !p-0 overflow-hidden border-obsidian-700/80 flex flex-col justify-between">
+          <div>
+            <div className="px-5 sm:px-6 py-3 bg-obsidian-900 border-b border-obsidian-800 font-mono text-[11px] text-lime-accent uppercase tracking-wider flex items-center justify-between">
+              <span>Language Proficiencies</span>
+              <span className="text-ivory-500">MULTILINGUAL</span>
+            </div>
+            <div className="p-6 space-y-3">
+              {educationData.languages.map((lang) => (
+                <div
+                  key={lang.name}
+                  className="p-3 rounded-lg bg-obsidian-900 border border-obsidian-800 flex items-center justify-between"
+                >
+                  <div>
+                    <div className="font-heading font-bold text-sm text-ivory-100">
+                      {lang.name}
+                    </div>
+                    <div className="font-sans text-xs text-ivory-400 mt-0.5">
+                      {lang.proficiency}
+                    </div>
+                  </div>
+                  <span className="editorial-badge !text-[10px] font-mono">
+                    {lang.status}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-
-        {/* Skills Developed */}
-        <div className="mt-12 lg:mt-16 glass-card p-6 lg:p-8 hover:shadow-2xl transition-all duration-500">
-          <h3 className="text-xl lg:text-2xl font-bold text-gray-100 text-center mb-6 lg:mb-8">
-            Skills Developed Through Education
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
-            {[
-              "Data Structures & Algorithms",
-              "Software Engineering",
-              "Database Management",
-              "Web Development",
-              "Object-Oriented Programming",
-              "System Design", 
-              "Mathematical Analysis",
-              "Critical Thinking"
-            ].map((skill, index) => (
-              <div 
-                key={skill}
-                className="flex items-center gap-2 lg:gap-3 p-2 lg:p-3 bg-gray-900/40 rounded-lg border border-gray-800 hover:border-cyan-600/30 hover:shadow-md transition-all duration-300 transform hover:scale-105"
-                style={{animationDelay: `${index * 75}ms`}}
-              >
-                <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex-shrink-0 animate-pulse"></div>
-                <span className="text-gray-300 font-semibold text-xs lg:text-sm">{skill}</span>
-              </div>
-            ))}
+          <div className="px-6 py-2.5 bg-obsidian-900/60 border-t border-obsidian-800/80 font-mono text-[10px] text-ivory-500">
+            COMMUNICATION // GLOBAL_TEAM_READY
           </div>
         </div>
       </div>
+      </MotionReveal>
     </section>
   );
 };

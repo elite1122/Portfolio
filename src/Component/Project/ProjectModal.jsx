@@ -1,6 +1,9 @@
 import { useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 const ProjectModal = ({ project, onClose }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -28,7 +31,11 @@ const ProjectModal = ({ project, onClose }) => {
       className="fixed inset-0 bg-obsidian-950/85 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-6"
       onClick={onClose}
     >
-      <div
+      <motion.div
+        initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.98, y: 10 }}
+        animate={shouldReduceMotion ? false : { opacity: 1, scale: 1, y: 0 }}
+        exit={shouldReduceMotion ? false : { opacity: 0, scale: 0.98, y: 10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
         className="editorial-card !p-0 max-w-3xl w-full max-h-[90vh] overflow-y-auto bg-obsidian-900 border-obsidian-700 shadow-2xl relative"
         onClick={(e) => e.stopPropagation()}
       >
@@ -75,8 +82,10 @@ const ProjectModal = ({ project, onClose }) => {
           <div className="relative aspect-video rounded-lg overflow-hidden border border-obsidian-700 bg-obsidian-950">
             <img
               src={project.img}
-              alt={project.name}
+              alt={`${project.name} Detailed System Architecture Screenshot`}
               className="w-full h-full object-cover object-top"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -146,7 +155,7 @@ const ProjectModal = ({ project, onClose }) => {
             </a>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

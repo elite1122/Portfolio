@@ -1,4 +1,5 @@
 import { experienceData } from "../../data/experienceData";
+import MotionReveal from "../Common/MotionReveal";
 
 const Experience = () => {
   return (
@@ -8,27 +9,29 @@ const Experience = () => {
       className="section-container border-b border-obsidian-700/60 relative"
     >
       {/* Section Header */}
-      <div className="mb-12 sm:mb-16">
-        <div className="editorial-eyebrow mb-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
-          <span>02 // Chronology</span>
+      <MotionReveal>
+        <div className="mb-12 sm:mb-16">
+          <div className="editorial-eyebrow mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+            <span>02 // Chronology</span>
+          </div>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory-100 tracking-tight">
+            Professional Experience &amp; Tenures.
+          </h2>
+          <p className="font-sans text-sm sm:text-base text-ivory-400 mt-2 max-w-2xl leading-relaxed">
+            Verified industry tenure engineering autonomous voice AI systems, conversational
+            receptionists, LLM integrations, and modern full-stack web applications.
+          </p>
         </div>
-        <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory-100 tracking-tight">
-          Professional Experience &amp; Tenures.
-        </h2>
-        <p className="font-sans text-sm sm:text-base text-ivory-400 mt-2 max-w-2xl leading-relaxed">
-          Verified industry tenure engineering autonomous voice AI systems, conversational
-          receptionists, LLM integrations, and modern full-stack web applications.
-        </p>
-      </div>
+      </MotionReveal>
 
       {/* Structured Editorial Timeline */}
       <div className="space-y-8 lg:space-y-10">
         {experienceData.map((exp, index) => (
-          <div
-            key={exp.id}
-            className="editorial-card !p-0 overflow-hidden border-obsidian-700/80 hover:border-obsidian-600 transition-all duration-200 shadow-xl"
-          >
+          <MotionReveal key={exp.id} delay={index * 0.1}>
+            <div
+              className="editorial-card !p-0 overflow-hidden border-obsidian-700/80 hover:border-obsidian-600 transition-all duration-200 shadow-xl"
+            >
             {/* Header Telemetry Row */}
             <div className="px-5 sm:px-8 py-3.5 bg-obsidian-900 border-b border-obsidian-800 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-ivory-400">
               <div className="flex items-center gap-2">
@@ -105,7 +108,8 @@ const Experience = () => {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+          </MotionReveal>
         ))}
       </div>
     </section>

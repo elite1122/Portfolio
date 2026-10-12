@@ -12,6 +12,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home></Home>,
   },
+  {
+    path: "*",
+    element: <Home></Home>,
+  },
 ]);
 
 createRoot(document.getElementById('root')).render(

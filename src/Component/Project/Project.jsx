@@ -2,6 +2,7 @@ import { useState } from "react";
 import { projectsData } from "../../data/projectsData";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
+import MotionReveal from "../Common/MotionReveal";
 
 const Project = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -24,48 +25,50 @@ const Project = () => {
       className="section-container border-b border-obsidian-700/60 relative"
     >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-        <div>
-          <div className="editorial-eyebrow mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
-            <span>01 // Selected Systems</span>
+      <MotionReveal>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+          <div>
+            <div className="editorial-eyebrow mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+              <span>01 // Selected Systems</span>
+            </div>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory-100 tracking-tight">
+              Production AI &amp; Full-Stack Work.
+            </h2>
+            <p className="font-sans text-sm sm:text-base text-ivory-400 mt-2 max-w-xl">
+              Autonomous voice platforms, full-stack web applications, and verified client solutions
+              engineered for production reliability.
+            </p>
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory-100 tracking-tight">
-            Production AI &amp; Full-Stack Work.
-          </h2>
-          <p className="font-sans text-sm sm:text-base text-ivory-400 mt-2 max-w-xl">
-            Autonomous voice platforms, full-stack web applications, and verified client solutions
-            engineered for production reliability.
-          </p>
-        </div>
 
-        {/* Category Filter Controls */}
-        <div
-          role="tablist"
-          aria-label="Filter projects by domain"
-          className="flex flex-wrap gap-1.5 p-1 bg-obsidian-900 border border-obsidian-700 rounded-lg self-start md:self-auto"
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              role="tab"
-              aria-selected={activeCategory === cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-3 py-1.5 rounded-md text-xs font-mono transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-lime-accent ${
-                activeCategory === cat
-                  ? "bg-lime-muted text-lime-accent border border-lime-border font-medium shadow-sm"
-                  : "text-ivory-400 hover:text-ivory-100 border border-transparent"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          {/* Category Filter Controls */}
+          <div
+            role="tablist"
+            aria-label="Filter projects by domain"
+            className="flex flex-wrap gap-1.5 p-1 bg-obsidian-900 border border-obsidian-700 rounded-lg self-start md:self-auto"
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                role="tab"
+                aria-selected={activeCategory === cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-3 py-1.5 rounded-md text-xs font-mono transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-lime-accent ${
+                  activeCategory === cat
+                    ? "bg-lime-muted text-lime-accent border border-lime-border font-medium shadow-sm"
+                    : "text-ivory-400 hover:text-ivory-100 border border-transparent"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      </MotionReveal>
 
       {/* FLAGSHIP FEATURED SYSTEM: CogniDrift (Shown when "All" or "AI & Automation" is active) */}
       {(activeCategory === "All" || activeCategory === "AI & Automation") && flagship && (
-        <div className="mb-12 sm:mb-16">
+        <MotionReveal delay={0.1} className="mb-12 sm:mb-16">
           <div className="editorial-card !p-0 overflow-hidden border-obsidian-700 hover:border-lime-accent/40 transition-colors shadow-2xl">
             <div className="grid lg:grid-cols-12 items-stretch">
               {/* Left Column: Deep Technical Narrative (7 cols) */}
@@ -178,7 +181,9 @@ const Project = () => {
                 <div className="relative flex-1 min-h-[260px] sm:min-h-[340px] bg-obsidian-950 overflow-hidden group">
                   <img
                     src={flagship.img}
-                    alt={flagship.name}
+                    alt="CogniDrift Autonomous AI Receptionist Platform Architecture and Interface"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-transparent to-transparent opacity-40"></div>
@@ -191,7 +196,7 @@ const Project = () => {
               </div>
             </div>
           </div>
-        </div>
+        </MotionReveal>
       )}
 
       {/* REGULAR PROJECTS GRID */}

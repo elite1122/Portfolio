@@ -48,8 +48,8 @@ const Navbar = () => {
     { name: "Projects", to: "projects" },
     { name: "Experience", to: "experience" },
     { name: "Skills", to: "skills" },
-    { name: "Education", to: "education" },
     { name: "About", to: "about" },
+    { name: "Education", to: "education" },
   ];
 
   return (
@@ -140,7 +140,7 @@ const Navbar = () => {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={navigateToResume}
-              className="editorial-btn-primary !text-[11px] !py-1.5 !px-2.5 font-mono"
+              className="editorial-btn-primary !text-[11px] !py-2 !px-3 font-mono min-h-[40px]"
               aria-label="Open Resume"
             >
               Resume
@@ -150,7 +150,7 @@ const Navbar = () => {
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-navigation"
               aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              className="p-2 rounded-lg text-ivory-300 hover:text-lime-accent bg-obsidian-900 border border-obsidian-700 hover:border-obsidian-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent"
+              className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-ivory-300 hover:text-lime-accent bg-obsidian-900 border border-obsidian-700 hover:border-obsidian-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent"
             >
               <svg
                 className="w-5 h-5 transition-transform duration-200"
@@ -189,7 +189,7 @@ const Navbar = () => {
               duration={400}
               offset={-80}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2.5 rounded-lg text-sm font-mono uppercase tracking-wider text-ivory-300 hover:text-lime-accent hover:bg-obsidian-850 border border-transparent hover:border-obsidian-700 transition-colors cursor-pointer"
+              className="block px-3 py-3 rounded-lg text-sm font-mono uppercase tracking-wider text-ivory-300 hover:text-lime-accent hover:bg-obsidian-850 border border-transparent hover:border-obsidian-700 transition-colors cursor-pointer min-h-[44px] flex items-center"
             >
               {item.name}
             </Link>

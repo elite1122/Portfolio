@@ -1,166 +1,144 @@
-
-import React, { useEffect, useState } from "react";
+import { Link } from "react-scroll";
+import MotionReveal from "../Common/MotionReveal";
 
 const AboutMe = () => {
-    const [isVisible, setIsVisible] = useState(false);
+  const driveLink =
+    "https://drive.google.com/file/d/1q8LywmTilOJTShI9wAiqfk7CN81Za3_1/view?usp=sharing";
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.1 }
-        );
+  const tenets = [
+    {
+      index: "01",
+      title: "Low-Latency Conversational Voice",
+      description:
+        "Prioritizing natural turn-taking, fast audio streaming, and resilient interruptions by optimizing the complete pipeline across telephony, speech recognition, and model inference.",
+    },
+    {
+      index: "02",
+      title: "End-to-End System Ownership",
+      description:
+        "Building without architectural handoff friction—from high-fidelity React interfaces to Node.js/Python microservices, database schemas, and external API orchestrations.",
+    },
+    {
+      index: "03",
+      title: "Deterministic Business Automation",
+      description:
+        "Grounding conversational AI with real business actions: autonomous calendar bookings via Cal.com, Google Calendar synchronizations, and reliable CRM pipeline updates.",
+    },
+  ];
 
-        const section = document.getElementById('about');
-        if (section) observer.observe(section);
+  return (
+    <section
+      id="about"
+      aria-label="About Md Rasheduzzaman Elite"
+      className="section-container border-b border-obsidian-700/60 relative"
+    >
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        {/* Left Column: Authentic Narrative & Actions (7 cols) */}
+        <MotionReveal className="lg:col-span-7 space-y-6">
+          <div className="editorial-eyebrow">
+            <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+            <span>04 // Background &amp; Philosophy</span>
+          </div>
 
-        return () => {
-            if (section) observer.unobserve(section);
-        };
-    }, []);
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory-100 tracking-tight leading-tight">
+            Engineering at the Intersection of{" "}
+            <span className="text-lime-accent">Conversational AI</span>{" "}
+            <span className="font-editorial-serif italic font-normal text-ivory-300">
+              &amp; Full-Stack Systems.
+            </span>
+          </h2>
 
-    const info = [
-        { text: "AI Engineer @ Cognidrift", count: "1+", icon: "🤖" },
-        { text: "CGPA · CSE, DIU", count: "3.89", icon: "🎓" },
-        { text: "Production AI Projects", count: "5", icon: "🚀" },
-        { text: "Languages Spoken", count: "3", icon: "🌐" },
-    ];
+          <div className="space-y-4 font-sans text-sm sm:text-base text-ivory-400 leading-relaxed">
+            <p>
+              I am an AI Engineer and Full-Stack Developer with a background in Computer Science &amp;
+              Engineering from Daffodil International University (CGPA 3.89 / 4.00). My work centers on
+              building production-ready conversational voice platforms, automated phone receptionists,
+              and modern web architectures that solve real operational workflows.
+            </p>
 
-    const skills = [
-        "Agentic AI Architectures",
-        "Real-time Voice AI",
-        "LLM + RAG Pipelines",
-        "Node.js & Python Backends",
-        "Figma → Production UI",
-        "Scalable Cloud Architecture"
-    ];
+            <p>
+              Rather than treating artificial intelligence as a disconnected prototype or static chat
+              interface, I treat speech models, LLM APIs, and telephony protocols as first-class,
+              integrated components of scalable software systems. At CogniDrift and Developer World LLC,
+              I shipped platforms where voice agents interact with users in natural language, negotiate
+              calendars, and synchronize lead intelligence directly into enterprise backends.
+            </p>
 
-    return (
-        <section id="about" className="section-container">
-            <div className={`transform transition-all duration-1000 ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-            }`}>
-                <div className="text-center mb-16">
-                    <h2 className="section-title">
-                        About <span className="gradient-text">Me</span>
-                    </h2>
-                    <p className="section-subtitle">
-                        AI Developer & Full-Stack Engineer building agentic, voice-first products
-                    </p>
+            <p>
+              My full-stack foundations allow me to operate across the entire lifecycle: translating
+              product requirements and Figma designs into clean React interfaces, orchestrating
+              asynchronous backend services in Node.js and Python, and deploying resilient cloud
+              integrations.
+            </p>
+          </div>
+
+          {/* Action Callouts */}
+          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-obsidian-800">
+            <a
+              href={driveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="editorial-btn-primary !py-2.5 !px-5 text-xs font-mono"
+              aria-label="Download verified Curriculum Vitae in PDF format"
+            >
+              <span>Download CV (PDF)</span>
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.2}
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+            </a>
+
+            <Link
+              to="contact"
+              smooth={true}
+              duration={400}
+              offset={-80}
+              className="editorial-btn-secondary !py-2.5 !px-5 text-xs font-mono cursor-pointer"
+            >
+              Start a Conversation
+            </Link>
+          </div>
+        </MotionReveal>
+
+        {/* Right Column: Architectural Tenets & Principles (5 cols) */}
+        <MotionReveal className="lg:col-span-5 space-y-4" delay={0.15}>
+          <div className="px-4 py-2 bg-obsidian-900 border border-obsidian-800 rounded-lg font-mono text-xs text-lime-accent uppercase tracking-wider flex items-center justify-between">
+            <span>Engineering Principles</span>
+            <span className="text-ivory-500 text-[10px]">VERIFIED_APPROACH</span>
+          </div>
+
+          <div className="space-y-3">
+            {tenets.map((tenet) => (
+              <div
+                key={tenet.index}
+                className="editorial-card p-5 sm:p-6 border-obsidian-700/80 hover:border-obsidian-600 transition-colors"
+              >
+                <div className="font-mono text-xs text-lime-accent font-semibold mb-1">
+                  {`PRINCIPIUM ${tenet.index} //`}
                 </div>
-
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                    {/* Content Section */}
-                    <div className="space-y-6 lg:space-y-8 order-2 lg:order-1">
-                        <div className="glass-card p-6 lg:p-8 space-y-4 lg:space-y-6 hover:shadow-2xl transition-all duration-500 animate-slide-in-left">
-                            <h3 className="text-xl lg:text-2xl font-bold text-gray-100 mb-3 lg:mb-4">
-                                My Journey
-                            </h3>
-                            <p className="text-gray-300 leading-relaxed text-base lg:text-lg">
-                                I'm an Innovative AI Developer and Full-Stack Engineer with specialized
-                                experience building Agentic AI solutions and autonomous Voice AI platforms.
-                                I integrate LLMs with real-time communication tools and orchestrate
-                                complex workflows in Node.js and Python.
-                            </p>
-                            <p className="text-gray-300 leading-relaxed text-base lg:text-lg">
-                                Currently I'm an Artificial Intelligence Engineer at Cognidrift (Utah, USA),
-                                where I ship AI-powered receptionist platforms — pairing real-time voice AI
-                                and NLP with Google Calendar and CRM automations on a scalable architecture.
-                            </p>
-                            <p className="text-gray-300 leading-relaxed text-base lg:text-lg">
-                                I graduated in Computer Science & Engineering from Daffodil International
-                                University with a CGPA of 3.89/4.00, and I have a proven track record of
-                                turning high-fidelity Figma designs into clean, AI-driven web architectures.
-                            </p>
-                        </div>
-
-                        {/* Skills Grid */}
-                        <div className="glass-card p-6 lg:p-8 hover:shadow-2xl transition-all duration-500 animate-slide-in-left" style={{animationDelay: '0.2s'}}>
-                            <h3 className="text-xl lg:text-2xl font-bold text-gray-100 mb-4 lg:mb-6">
-                                What I Bring
-                            </h3>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
-                                {skills.map((skill, index) => (
-                                    <div 
-                                        key={skill}
-                                        className="flex items-center gap-3 p-3 bg-gray-900/40 rounded-lg border border-gray-800 hover:border-cyan-600/30 hover:shadow-md transition-all duration-300 transform hover:scale-105"
-                                        style={{animationDelay: `${index * 100}ms`}}
-                                    >
-                                        <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full animate-pulse"></div>
-                                        <span className="text-gray-300 font-semibold text-sm lg:text-base">{skill}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Stats Section */}
-                    <div className="space-y-6 lg:space-y-8 order-1 lg:order-2">
-                        <div className="grid grid-cols-2 gap-4 lg:gap-6">
-                            {info.map((item, index) => (
-                                <div 
-                                    key={item.text} 
-                                    className="glass-card p-4 lg:p-6 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300 group animate-scale-in"
-                                    style={{animationDelay: `${index * 150}ms`}}
-                                >
-                                    <div className="text-2xl lg:text-4xl mb-1 lg:mb-2 animate-bounce">{item.icon}</div>
-                                    <div className="text-2xl lg:text-4xl font-bold gradient-text mb-1 lg:mb-2">
-                                        {item.count}+
-                                    </div>
-                                    <div className="text-gray-300 font-semibold text-xs lg:text-sm">{item.text}</div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Additional Info Card */}
-                        <div className="glass-card p-6 lg:p-8 space-y-4 lg:space-y-6 hover:shadow-2xl transition-all duration-500 animate-slide-in-right">
-                            <h3 className="text-xl lg:text-2xl font-bold text-gray-100">
-                                Why Choose Me?
-                            </h3>
-                            <div className="space-y-3 lg:space-y-4">
-                                <div className="flex items-start gap-3 lg:gap-4 group">
-                                    <div className="w-5 h-5 lg:w-6 lg:h-6 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                        <svg className="w-2.5 h-2.5 lg:w-3 lg:h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-gray-100 font-bold text-sm lg:text-base">Production AI, not demos</h4>
-                                        <p className="text-gray-300 text-sm lg:text-base">I ship Agentic AI and Voice AI systems that handle real users — not throwaway prototypes.</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3 lg:gap-4 group">
-                                    <div className="w-5 h-5 lg:w-6 lg:h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                        <svg className="w-2.5 h-2.5 lg:w-3 lg:h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-gray-100 font-bold text-sm lg:text-base">Full-Stack + AI Fluency</h4>
-                                        <p className="text-gray-300 text-sm lg:text-base">I move from React + Tailwind frontends to Node.js / Python backends and LLM orchestration without handoffs.</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3 lg:gap-4 group">
-                                    <div className="w-5 h-5 lg:w-6 lg:h-6 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                        <svg className="w-2.5 h-2.5 lg:w-3 lg:h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-gray-100 font-bold text-sm lg:text-base">Design-to-Code Discipline</h4>
-                                        <p className="text-gray-300 text-sm lg:text-base">Proven track record of turning high-fidelity Figma designs into scalable, AI-driven web architectures.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+                <h3 className="font-heading text-lg font-bold text-ivory-100 tracking-tight mb-2">
+                  {tenet.title}
+                </h3>
+                <p className="font-sans text-xs sm:text-sm text-ivory-400 leading-relaxed">
+                  {tenet.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </MotionReveal>
+      </div>
+    </section>
+  );
 };
 
 export default AboutMe;

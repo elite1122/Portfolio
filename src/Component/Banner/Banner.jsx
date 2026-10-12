@@ -1,6 +1,7 @@
 import { Link } from "react-scroll";
 import eliteProfile from "../../assets/Elite.png";
 import Type from "../Other/Type";
+import MotionReveal from "../Common/MotionReveal";
 
 const Banner = () => {
   const driveLink =
@@ -60,7 +61,7 @@ const Banner = () => {
       <div className="editorial-container relative z-10 w-full">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Editorial Positioning & Content (7 cols) */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          <MotionReveal className="lg:col-span-7 space-y-6 sm:space-y-8">
             {/* Live Telemetry Pill */}
             <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-obsidian-900 border border-obsidian-700/80 text-ivory-300 text-xs font-mono">
               <span className="relative flex h-2 w-2">
@@ -201,10 +202,10 @@ const Banner = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </MotionReveal>
 
           {/* Right Column: Architectural Profile Card (5 cols) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <MotionReveal className="lg:col-span-5 flex justify-center lg:justify-end" delay={0.15}>
             <div className="w-full max-w-sm sm:max-w-md bg-obsidian-900 border border-obsidian-700 rounded-xl overflow-hidden shadow-2xl shadow-black/80">
               {/* Studio Workspace Header Bar */}
               <div className="px-4 py-2.5 bg-obsidian-950 border-b border-obsidian-800 flex items-center justify-between font-mono text-[11px] text-ivory-400">
@@ -281,7 +282,7 @@ const Banner = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </MotionReveal>
         </div>
 
         {/* Intentional Transition Indicator into Next Section */}

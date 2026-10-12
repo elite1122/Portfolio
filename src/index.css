@@ -25,6 +25,11 @@
     color: #08090a;
   }
 
+  :focus-visible {
+    outline: 2px solid #c6f135;
+    outline-offset: 2px;
+  }
+
   :root {
     --color-canvas: #08090a;
     --color-surface: #14171c;

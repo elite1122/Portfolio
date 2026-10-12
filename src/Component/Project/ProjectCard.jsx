@@ -1,6 +1,14 @@
+import { motion, useReducedMotion } from "framer-motion";
+
 const ProjectCard = ({ project, onSelect }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <article className="editorial-card !p-0 flex flex-col justify-between group hover:border-obsidian-600 transition-all duration-200 overflow-hidden shadow-lg">
+    <motion.article
+      whileHover={shouldReduceMotion ? undefined : { y: -3 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="editorial-card !p-0 flex flex-col justify-between group hover:border-obsidian-600 transition-colors duration-200 overflow-hidden shadow-lg"
+    >
       <div>
         {/* Frame Header */}
         <div className="px-4 py-2.5 bg-obsidian-900 border-b border-obsidian-800 flex items-center justify-between font-mono text-[11px] text-ivory-400">
@@ -16,9 +24,10 @@ const ProjectCard = ({ project, onSelect }) => {
         <div className="relative aspect-video bg-obsidian-950 overflow-hidden border-b border-obsidian-800">
           <img
             src={project.img}
-            alt={project.name}
+            alt={`${project.name} Application Interface`}
             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
             loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/80 via-transparent to-transparent opacity-60"></div>
         </div>
@@ -55,7 +64,7 @@ const ProjectCard = ({ project, onSelect }) => {
       <div className="p-5 sm:p-6 pt-0 border-t border-obsidian-800/60 mt-4 flex items-center gap-2">
         <button
           onClick={() => onSelect(project)}
-          className="editorial-btn-secondary flex-1 !text-xs !py-2 font-mono text-center"
+          className="editorial-btn-secondary flex-1 !text-xs !py-2 font-mono text-center focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-lime-accent"
         >
           Details
         </button>
@@ -101,7 +110,7 @@ const ProjectCard = ({ project, onSelect }) => {
           </svg>
         </a>
       </div>
-    </article>
+    </motion.article>
   );
 };
 
