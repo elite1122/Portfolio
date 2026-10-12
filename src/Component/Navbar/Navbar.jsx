@@ -1,101 +1,169 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   const driveLink =
     "https://drive.google.com/file/d/1q8LywmTilOJTShI9wAiqfk7CN81Za3_1/view?usp=sharing";
 
   const navigateToResume = () => {
-    window.open(driveLink, "_blank");
+    window.open(driveLink, "_blank", "noopener,noreferrer");
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 30);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMobileMenuOpen]);
+
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
   const navItems = [
-    { name: "Home", to: "home" },
-    { name: "About", to: "about" },
-    { name: "Skills", to: "skills" },
-    { name: "Experience", to: "experience" },
-    { name: "Education", to: "education" },
+    { name: "Overview", to: "home" },
     { name: "Projects", to: "projects" },
-    { name: "Contact", to: "contact" },
+    { name: "Experience", to: "experience" },
+    { name: "Skills", to: "skills" },
+    { name: "Education", to: "education" },
+    { name: "About", to: "about" },
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-gray-900/95 backdrop-blur-md shadow-xl shadow-cyan-500/10 border-b border-gray-800' 
-        : 'bg-transparent'
-    }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        isScrolled
+          ? "bg-obsidian-950/90 backdrop-blur-md border-b border-obsidian-700/80 shadow-lg shadow-black/40"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
+        <div className="flex items-center justify-between h-16 sm:h-20">
+          {/* Brand Wordmark */}
+          <div className="flex items-center gap-3">
             <Link
               to="home"
               smooth={true}
-              duration={500}
-              className="cursor-pointer group"
+              duration={400}
+              offset={-80}
+              className="cursor-pointer group flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent rounded-md py-1"
             >
-              <span className="text-2xl font-bold font-heading tracking-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 animate-pulse-slow">
+              <span className="font-heading font-bold text-xl sm:text-2xl tracking-tight text-ivory-100 group-hover:text-lime-accent transition-colors">
                 ELITE
+              </span>
+              <span className="hidden sm:inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-lime-accent bg-lime-muted border border-lime-border px-2 py-0.5 rounded">
+                <span className="w-1.5 h-1.5 rounded-full bg-lime-accent animate-pulse"></span>
+                AI // FS
               </span>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.to}
-                  smooth={true}
-                  duration={500}
-                  className="text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-lg text-sm font-display font-semibold tracking-wide transition-all duration-300 cursor-pointer hover:bg-gray-800/50 relative group"
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-                </Link>
-              ))}
-            </div>
-          </div>
+          {/* Desktop Navigation Links */}
+          <nav
+            aria-label="Primary desktop navigation"
+            className="hidden md:flex items-center gap-1 lg:gap-2 bg-obsidian-900/60 border border-obsidian-700/60 rounded-lg px-3 py-1.5"
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.to}
+                smooth={true}
+                duration={400}
+                spy={true}
+                offset={-80}
+                activeClass="text-lime-accent !bg-obsidian-800 font-medium"
+                className="text-ivory-400 hover:text-ivory-100 px-3 py-1.5 rounded-md text-xs font-mono uppercase tracking-wider transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-lime-accent"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
 
-          {/* Download CV Button */}
-          <div className="hidden md:block">
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-3">
+            <Link
+              to="contact"
+              smooth={true}
+              duration={400}
+              offset={-80}
+              className="editorial-btn-secondary !text-xs !py-2 !px-3.5 cursor-pointer font-mono"
+            >
+              Contact
+            </Link>
             <button
               onClick={navigateToResume}
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-2.5 rounded-full text-sm font-display font-bold tracking-wide transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg shadow-cyan-500/50"
+              className="editorial-btn-primary !text-xs !py-2 !px-3.5 font-mono"
+              aria-label="Download Curriculum Vitae in PDF format"
             >
-              Download CV
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 p-2 rounded-lg transition-all duration-300"
-            >
+              <span>Resume</span>
               <svg
-                className={`h-6 w-6 transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-90' : ''}`}
+                className="w-3.5 h-3.5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                strokeWidth={2.2}
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Mobile Menu Toggle Button */}
+          <div className="flex md:hidden items-center gap-2">
+            <button
+              onClick={navigateToResume}
+              className="editorial-btn-primary !text-[11px] !py-1.5 !px-2.5 font-mono"
+              aria-label="Open Resume"
+            >
+              Resume
+            </button>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              className="p-2 rounded-lg text-ivory-300 hover:text-lime-accent bg-obsidian-900 border border-obsidian-700 hover:border-obsidian-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent"
+            >
+              <svg
+                className="w-5 h-5 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
               >
                 {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 )}
               </svg>
             </button>
@@ -103,39 +171,53 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out ${
-        isMobileMenuOpen 
-          ? 'max-h-96 opacity-100' 
-          : 'max-h-0 opacity-0'
-      } overflow-hidden`}>
-        <div className="px-4 pt-2 pb-4 space-y-1 bg-gray-900/95 backdrop-blur-md border-t border-gray-800 shadow-lg shadow-cyan-500/10">
+      {/* Mobile Navigation Dropdown Menu */}
+      <div
+        id="mobile-navigation"
+        className={`md:hidden transition-all duration-200 ease-in-out ${
+          isMobileMenuOpen
+            ? "max-h-screen opacity-100 visible border-b border-obsidian-700 bg-obsidian-950/98 backdrop-blur-xl shadow-2xl"
+            : "max-h-0 opacity-0 invisible overflow-hidden"
+        }`}
+      >
+        <nav aria-label="Mobile navigation" className="px-4 pt-3 pb-6 space-y-1">
           {navItems.map((item) => (
             <Link
               key={item.name}
               to={item.to}
               smooth={true}
-              duration={500}
+              duration={400}
+              offset={-80}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 block px-4 py-3 rounded-lg text-base font-display font-semibold tracking-wide transition-all duration-300 cursor-pointer"
+              className="block px-3 py-2.5 rounded-lg text-sm font-mono uppercase tracking-wider text-ivory-300 hover:text-lime-accent hover:bg-obsidian-850 border border-transparent hover:border-obsidian-700 transition-colors cursor-pointer"
             >
               {item.name}
             </Link>
           ))}
-          <div className="pt-2">
+          <div className="pt-3 border-t border-obsidian-800 flex gap-2">
+            <Link
+              to="contact"
+              smooth={true}
+              duration={400}
+              offset={-80}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="editorial-btn-secondary flex-1 text-center font-mono text-xs py-2.5"
+            >
+              Contact
+            </Link>
             <button
               onClick={() => {
                 navigateToResume();
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-4 py-3 rounded-lg text-base font-display font-bold tracking-wide transition-all duration-300 shadow-lg shadow-cyan-500/50"
+              className="editorial-btn-primary flex-1 text-center font-mono text-xs py-2.5"
             >
               Download CV
             </button>
           </div>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 };
 

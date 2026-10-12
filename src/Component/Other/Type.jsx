@@ -1,26 +1,24 @@
-import React from "react";
 import Typewriter from "typewriter-effect";
 
 function Type() {
   return (
-    <span className="relative">
+    <span className="inline-block">
       <Typewriter
         options={{
           strings: [
-            "AI Developer",
-            "Agentic AI Engineer",
-            "Voice AI Specialist",
-            "LLM Integration Expert",
-            "Full-Stack Engineer",
-            "RAG & NLP Practitioner",
+            "Conversational AI Architect",
+            "Voice Automation Specialist",
+            "LLM Integration Engineer",
+            "Full-Stack Web Developer",
+            "Autonomous Workflow Builder",
           ],
           autoStart: true,
           loop: true,
-          deleteSpeed: 30,
-          delay: 80,
-          cursor: "|",
-          wrapperClassName: "bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent font-bold",
-          cursorClassName: "text-cyan-400 animate-pulse",
+          deleteSpeed: 25,
+          delay: 60,
+          cursor: "▍",
+          wrapperClassName: "text-lime-accent font-mono font-medium tracking-tight",
+          cursorClassName: "text-lime-accent animate-pulse font-mono ml-0.5",
         }}
       />
     </span>

@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
@@ -284,26 +284,6 @@ const ContactForm = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Toast Container with custom styling */}
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-                toastStyle={{
-                    background: 'rgba(30, 41, 59, 0.95)',
-                    backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(148, 163, 184, 0.1)',
-                    color: '#f8fafc'
-                }}
-            />
         </section>
     );
 };

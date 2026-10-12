@@ -1,153 +1,115 @@
-import React, { useEffect, useState } from 'react';
+import { experienceData } from "../../data/experienceData";
 
 const Experience = () => {
-    const [isVisible, setIsVisible] = useState(false);
+  return (
+    <section
+      id="experience"
+      aria-label="Professional Experience"
+      className="section-container border-b border-obsidian-700/60 relative"
+    >
+      {/* Section Header */}
+      <div className="mb-12 sm:mb-16">
+        <div className="editorial-eyebrow mb-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+          <span>02 // Chronology</span>
+        </div>
+        <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory-100 tracking-tight">
+          Professional Experience &amp; Tenures.
+        </h2>
+        <p className="font-sans text-sm sm:text-base text-ivory-400 mt-2 max-w-2xl leading-relaxed">
+          Verified industry tenure engineering autonomous voice AI systems, conversational
+          receptionists, LLM integrations, and modern full-stack web applications.
+        </p>
+      </div>
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) setIsVisible(true);
-            },
-            { threshold: 0.1 }
-        );
-
-        const section = document.getElementById('experience');
-        if (section) observer.observe(section);
-
-        return () => {
-            if (section) observer.unobserve(section);
-        };
-    }, []);
-
-    const experiences = [
-        {
-            role: 'Artificial Intelligence Engineer',
-            company: 'Cognidrift',
-            location: 'Utah, USA · Remote',
-            period: 'January 2025 — Present',
-            type: 'Full-time',
-            highlights: [
-                'Built AI-powered receptionist platforms with React, Framer Motion, and Tailwind CSS.',
-                'Implemented real-time Voice AI with NLP for natural, low-latency conversations.',
-                'Automated appointment scheduling through Google Calendar and CRM integrations.',
-                'Architected scalable, high-performance UI/UX for autonomous voice workflows.',
-            ],
-            stack: [
-                'React',
-                'Framer Motion',
-                'Tailwind CSS',
-                'Node.js',
-                'Python',
-                'LLMs',
-                'Voice AI',
-                'NLP',
-                'Google Calendar API',
-                'CRM Integrations',
-            ],
-            color: 'from-cyan-500 to-blue-500',
-        },
-    ];
-
-    return (
-        <section id="experience" className="section-container">
-            <div
-                className={`transform transition-all duration-1000 ${
-                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                }`}
-            >
-                <div className="text-center mb-16">
-                    <h2 className="section-title">
-                        My <span className="gradient-text">Experience</span>
-                    </h2>
-                    <p className="section-subtitle">
-                        Building production AI systems and shipping autonomous voice products
-                    </p>
-                </div>
-
-                <div className="relative">
-                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/60 via-purple-500/60 to-emerald-500/60 transform md:-translate-x-1/2"></div>
-
-                    <div className="space-y-8 lg:space-y-12">
-                        {experiences.map((exp, index) => (
-                            <div
-                                key={`${exp.company}-${exp.role}`}
-                                className={`relative flex items-start ${
-                                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                                } flex-col md:gap-16 animate-fade-in`}
-                                style={{ animationDelay: `${index * 200}ms` }}
-                            >
-                                <div className="absolute left-4 md:left-1/2 w-3 h-3 lg:w-4 lg:h-4 bg-gradient-to-r from-cyan-400/70 to-blue-500/70 rounded-full transform md:-translate-x-1/2 border border-gray-800 z-10 shadow-lg mt-6">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/50 to-blue-500/40 rounded-full animate-pulse"></div>
-                                </div>
-
-                                <div
-                                    className={`w-full md:w-5/12 ml-8 lg:ml-12 md:ml-0 ${
-                                        index % 2 === 0 ? 'md:text-right' : 'md:text-left'
-                                    }`}
-                                >
-                                    <div className="glass-card p-5 lg:p-8 hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 group">
-                                        <div className="flex flex-wrap items-center gap-2 mb-3">
-                                            <span
-                                                className={`px-2 lg:px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${exp.color} text-white shadow-md`}
-                                            >
-                                                {exp.type}
-                                            </span>
-                                            <span className="text-gray-300 text-xs lg:text-sm font-semibold">
-                                                {exp.period}
-                                            </span>
-                                        </div>
-
-                                        <h3 className="text-lg lg:text-2xl font-bold text-gray-100 mb-1 group-hover:text-cyan-400 transition-colors duration-300">
-                                            {exp.role}
-                                        </h3>
-                                        <p className="text-cyan-300 font-bold text-sm lg:text-base">
-                                            {exp.company}
-                                        </p>
-                                        <p className="text-gray-400 text-xs lg:text-sm mb-4">
-                                            {exp.location}
-                                        </p>
-
-                                        <ul
-                                            className={`space-y-2 mb-5 ${
-                                                index % 2 === 0 ? 'md:text-right' : 'md:text-left'
-                                            } text-left`}
-                                        >
-                                            {exp.highlights.map((h) => (
-                                                <li
-                                                    key={h}
-                                                    className="flex items-start gap-2 text-gray-300 text-sm lg:text-base leading-relaxed"
-                                                >
-                                                    <span className="mt-2 w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex-shrink-0"></span>
-                                                    <span>{h}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-
-                                        <div
-                                            className={`flex flex-wrap gap-2 ${
-                                                index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'
-                                            }`}
-                                        >
-                                            {exp.stack.map((tech) => (
-                                                <span
-                                                    key={tech}
-                                                    className="bg-gray-900/50 text-cyan-300 px-2.5 py-1 rounded-full text-xs font-semibold border border-gray-800"
-                                                >
-                                                    {tech}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="hidden md:block w-5/12"></div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+      {/* Structured Editorial Timeline */}
+      <div className="space-y-8 lg:space-y-10">
+        {experienceData.map((exp, index) => (
+          <div
+            key={exp.id}
+            className="editorial-card !p-0 overflow-hidden border-obsidian-700/80 hover:border-obsidian-600 transition-all duration-200 shadow-xl"
+          >
+            {/* Header Telemetry Row */}
+            <div className="px-5 sm:px-8 py-3.5 bg-obsidian-900 border-b border-obsidian-800 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-ivory-400">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-lime-accent"></span>
+                <span className="text-ivory-200 font-semibold uppercase tracking-wider">
+                  {`ROLE 0${index + 1} // ${exp.company.toUpperCase()}`}
+                </span>
+              </div>
+              <div className="flex items-center gap-3 text-[11px]">
+                <span className="text-lime-accent font-medium">
+                  {exp.period}
+                </span>
+                <span className="text-obsidian-600">/</span>
+                <span className="text-ivory-500">
+                  {exp.location}
+                </span>
+              </div>
             </div>
-        </section>
-    );
+
+            {/* Main Content Body */}
+            <div className="p-6 sm:p-8 lg:p-10 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                <div>
+                  <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-ivory-100 tracking-tight">
+                    {exp.role}
+                  </h3>
+                  <div className="font-mono text-sm text-lime-accent font-medium mt-1">
+                    {exp.company}
+                  </div>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-obsidian-900 border border-obsidian-800 text-[11px] font-mono text-ivory-400 self-start sm:self-auto">
+                  <span className="w-1.5 h-1.5 rounded-full bg-ivory-500"></span>
+                  <span>TENURE CONCLUDED</span>
+                </div>
+              </div>
+
+              {/* High-level Summary */}
+              <p className="font-sans text-sm sm:text-base text-ivory-300 leading-relaxed max-w-3xl">
+                {exp.summary}
+              </p>
+
+              {/* Responsibilities Bullets */}
+              <div className="space-y-3 pt-2">
+                <div className="font-mono text-xs uppercase tracking-wider text-ivory-400 font-semibold">
+                  Core Engineering Responsibilities:
+                </div>
+                <ul className="space-y-2.5">
+                  {exp.responsibilities.map((resp, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-xs sm:text-sm text-ivory-400 leading-relaxed"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-lime-accent mt-2 flex-shrink-0" />
+                      <span>{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Stack Chips */}
+              <div className="pt-4 border-t border-obsidian-800/80">
+                <div className="font-mono text-[11px] uppercase tracking-wider text-ivory-500 mb-2">
+                  Key Technologies &amp; Frameworks:
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {exp.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="editorial-badge !text-[11px] hover:border-lime-accent/30 transition-colors"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default Experience;

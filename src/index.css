@@ -4,118 +4,145 @@
 
 @layer base {
   * {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
   
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
   body {
+    background-color: #08090a;
+    color: #d6d7cf;
     font-feature-settings: 'cv01', 'cv03', 'cv04', 'cv11';
-    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #111111 100%);
-    color: #e5e7eb;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #c6f135;
+    color: #08090a;
   }
 
   :root {
-    --color-primary: #06b6d4;
-    --color-secondary: #8b5cf6;
-    --color-accent: #10b981;
-    --color-background: #000000;
-    --color-surface: #0a0a0a;
-    --color-surface-light: #1a1a1a;
-    --color-text: #e5e7eb;
-    --color-text-muted: #9ca3af;
-    --color-text-light: #d1d5db;
-    --color-border: #1f2937;
-    --color-error: #ef4444;
-    --color-warning: #f59e0b;
-    --color-success: #10b981;
+    --color-canvas: #08090a;
+    --color-surface: #14171c;
+    --color-surface-elevated: #1c2026;
+    --color-border: #282e37;
+    --color-border-hover: #38404d;
+    --color-text-primary: #fbfbf9;
+    --color-text-secondary: #9fa197;
+    --color-text-body: #d6d7cf;
+    --color-text-muted: #6b6d64;
+    --color-accent: #c6f135;
+    --color-accent-hover: #b5df2b;
+    --color-accent-muted: rgba(198, 241, 53, 0.10);
   }
 }
 
 @layer components {
+  /* ==========================================================================
+     Dark Editorial Design System Core Components
+     ========================================================================== */
+  
+  .editorial-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .editorial-eyebrow {
+    @apply font-mono text-xs uppercase tracking-widest text-lime-accent flex items-center gap-2 font-medium;
+  }
+  
+  .editorial-headline {
+    @apply font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ivory-100;
+  }
+  
+  .editorial-subheadline {
+    @apply font-sans text-base sm:text-lg text-ivory-400 max-w-2xl leading-relaxed;
+  }
+  
+  .editorial-card {
+    @apply bg-obsidian-850 border border-obsidian-700/80 rounded-xl p-6 transition-all duration-200 hover:border-obsidian-600;
+  }
+  
+  .editorial-card-interactive {
+    @apply bg-obsidian-850 border border-obsidian-700/80 rounded-xl p-6 transition-all duration-200 hover:border-lime-accent/40 hover:bg-obsidian-800/80;
+  }
+  
+  .editorial-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-obsidian-800 text-ivory-300 border border-obsidian-700;
+  }
+  
+  .editorial-badge-lime {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-lime-muted text-lime-accent border border-lime-border;
+  }
+  
+  .editorial-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-sans text-sm font-semibold bg-lime-accent text-obsidian-950 hover:bg-lime-hover transition-all duration-150 active:scale-[0.98] shadow-sm;
+  }
+  
+  .editorial-btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-sans text-sm font-semibold bg-obsidian-850 text-ivory-100 border border-obsidian-700 hover:bg-obsidian-800 hover:border-obsidian-600 transition-all duration-150 active:scale-[0.98];
+  }
+  
+  .editorial-link {
+    @apply text-ivory-300 hover:text-lime-accent transition-colors duration-150 underline-offset-4 hover:underline;
+  }
+
+  /* ==========================================================================
+     Refined Palette Mappings for Existing Components (Preserves Compatibility)
+     ========================================================================== */
+
   .glass-card {
-    @apply bg-gray-900/50 backdrop-blur-lg border border-gray-700/50 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300;
+    @apply bg-obsidian-850/95 border border-obsidian-700/80 rounded-xl transition-all duration-200 hover:border-obsidian-600 shadow-lg;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent;
+    @apply text-ivory-100 font-heading;
   }
   
   .gradient-button {
-    @apply bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg shadow-cyan-500/30;
+    @apply bg-lime-accent hover:bg-lime-hover text-obsidian-950 font-semibold rounded-lg transition-all duration-150 active:scale-[0.98] shadow-sm;
   }
   
   .outline-button {
-    @apply border-2 border-cyan-500 text-cyan-400 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg hover:shadow-cyan-500/30;
+    @apply border border-obsidian-700 text-ivory-200 rounded-lg font-semibold hover:border-lime-accent/50 hover:text-lime-accent hover:bg-obsidian-800/50 transition-all duration-150;
   }
   
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
   }
   
   .section-title {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4 text-gray-100;
+    @apply font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4 text-ivory-100 tracking-tight;
   }
   
   .section-subtitle {
-    @apply text-base sm:text-lg lg:text-xl text-gray-400 text-center mb-12 sm:mb-16 max-w-3xl mx-auto px-4;
+    @apply font-sans text-base sm:text-lg text-ivory-400 text-center mb-12 sm:mb-16 max-w-2xl mx-auto px-4 leading-relaxed;
   }
 }
 
 @layer utilities {
-  .animate-spin-slow {
-    animation: spin 10s linear infinite;
-  }
-  
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-  
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-  
-  .animate-slide-up {
-    animation: slideUp 0.8s ease-out forwards;
-  }
-  
-  .animate-bounce-slow {
-    animation: bounce 3s ease-in-out infinite;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.8s ease-out forwards;
-  }
-
-  .animate-slide-in-left {
-    animation: slideInLeft 0.8s ease-out forwards;
-  }
-
-  .animate-slide-in-right {
-    animation: slideInRight 0.8s ease-out forwards;
-  }
-
-  .animate-wiggle {
-    animation: wiggle 1s ease-in-out infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  .font-editorial-serif {
+    font-family: 'Instrument Serif', Georgia, serif;
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
+/* ==========================================================================
+   Motion and Accessibility: Prefers Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* Ensure ion-icon inherits text color so icons remain visible on light backgrounds */
+/* Ensure ion-icon inherits currentColor cleanly */
 ion-icon {
   color: inherit;
   display: inline-block;
@@ -124,116 +151,21 @@ ion-icon {
   line-height: 1;
 }
 
-/* Add shimmer effect for skill cards */
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
-.animate-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(6, 182, 212, 0.1) 50%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 3s ease-in-out infinite;
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.3), 0 10px 40px rgba(6, 182, 212, 0.2);
-  }
-  to {
-    box-shadow: 0 0 50px rgba(6, 182, 212, 0.5), 0 15px 60px rgba(6, 182, 212, 0.3);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes wiggle {
-  0%, 100% {
-    transform: rotate(-3deg);
-  }
-  50% {
-    transform: rotate(3deg);
-  }
-}
-
-/* Custom scrollbar */
+/* Minimalist Dark Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #08090a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #06b6d4, #8b5cf6);
-  border-radius: 10px;
-  border: 2px solid #0a0a0a;
+  background: #282e37;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #0891b2, #7c3aed);
+  background: #38404d;
 }
-
