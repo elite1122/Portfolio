@@ -8,6 +8,7 @@ const Footer = () => {
         { name: "Home", to: "home" },
         { name: "About", to: "about" },
         { name: "Skills", to: "skills" },
+        { name: "Experience", to: "experience" },
         { name: "Projects", to: "projects" },
         { name: "Contact", to: "contact" }
     ];
@@ -37,8 +38,9 @@ const Footer = () => {
                             <span className="text-3xl font-bold gradient-text animate-pulse-slow">ELITE</span>
                         </Link>
                         <p className="text-gray-400 leading-relaxed max-w-md font-medium">
-                            Passionate full-stack developer creating exceptional digital experiences 
-                            through innovative web development and clean, efficient code.
+                            AI Developer & Full-Stack Engineer building Agentic AI and autonomous
+                            Voice AI platforms — integrating LLMs with real-time communication and
+                            scalable Node.js / Python backends.
                         </p>
                         <div className="flex gap-4">
                             {socialLinks.map((social) => (
@@ -97,7 +99,7 @@ const Footer = () => {
                             </a>
                             <div className="flex items-center gap-3 text-gray-300">
                                 <ion-icon name="location" className="text-lg text-gray-300"></ion-icon>
-                                <span className="text-sm font-medium text-gray-300">Jhenaidah, Bangladesh</span>
+                                <span className="text-sm font-medium text-gray-300">Dhaka, Bangladesh</span>
                             </div>
                         </div>
                     </div>

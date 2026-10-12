@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import Project from '../Project/Project';
 import Footer from '../Footer/Footer';
 import Education from '../Education/Education';
+import Experience from '../Experience/Experience';
 
 const Home = () => {
     return (
@@ -40,6 +41,7 @@ const Home = () => {
                 <Banner />
                 <AboutMe />
                 <Skills />
+                <Experience />
                 <Education />
                 <Project />
                 <ContactForm />

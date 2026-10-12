@@ -10,7 +10,7 @@ const Banner = () => {
         setIsVisible(true);
     }, []);
 
-    const driveLink ="https://drive.google.com/file/d/1JXEV3uQdJ7-VjIY0-wXCF9iLU5dfIyGV/view?usp=sharing";
+    const driveLink ="https://drive.google.com/file/d/1q8LywmTilOJTShI9wAiqfk7CN81Za3_1/view?usp=sharing";
     const navigateToResume = () => {
         window.open(driveLink, "_blank");
     };
@@ -100,23 +100,24 @@ const Banner = () => {
 
                         {/* Description */}
                         <p className="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl animate-fade-in">
-                            Passionate about crafting exceptional digital experiences through innovative web development. 
-                            I transform ideas into powerful, user-centric solutions with clean code and cutting-edge design.
+                            Innovative AI Developer and Full-Stack Engineer specializing in Agentic AI
+                            architectures and autonomous Voice AI platforms. I integrate LLMs with real-time
+                            communication tools and orchestrate complex workflows in Node.js and Python.
                         </p>
 
                         {/* Stats */}
                         <div className="grid grid-cols-3 gap-3 sm:gap-6 py-4 lg:py-6">
                             <div className="text-center glass-card p-4 transform hover:scale-105 transition-all duration-300 animate-scale-in">
-                                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-400">3+</div>
-                                <div className="text-gray-300 text-xs sm:text-sm font-medium">Years Experience</div>
+                                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-400">AI</div>
+                                <div className="text-gray-300 text-xs sm:text-sm font-medium">Engineer @ Cognidrift</div>
                             </div>
                             <div className="text-center glass-card p-4 transform hover:scale-105 transition-all duration-300 animate-scale-in" style={{animationDelay: '0.1s'}}>
-                                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-purple-400">50+</div>
-                                <div className="text-gray-300 text-xs sm:text-sm font-medium">Projects Built</div>
+                                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-purple-400">LLM</div>
+                                <div className="text-gray-300 text-xs sm:text-sm font-medium">Agentic + Voice AI</div>
                             </div>
                             <div className="text-center glass-card p-4 transform hover:scale-105 transition-all duration-300 animate-scale-in" style={{animationDelay: '0.2s'}}>
-                                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-emerald-400">100%</div>
-                                <div className="text-gray-300 text-xs sm:text-sm font-medium">Client Satisfaction</div>
+                                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-emerald-400">3.89</div>
+                                <div className="text-gray-300 text-xs sm:text-sm font-medium">CGPA · CSE, DIU</div>
                             </div>
                         </div>
 
@@ -189,13 +190,13 @@ const Banner = () => {
 
                             {/* Floating badges - Responsive positioning */}
                             <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 glass-card bg-gradient-to-r from-emerald-500/12 to-cyan-500/12 text-emerald-300 px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold animate-bounce border border-emerald-700/20 shadow-lg">
-                                🚀 Available for hire!
+                                🤖 Agentic AI Builder
                             </div>
                             <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 glass-card bg-gradient-to-r from-purple-500/12 to-pink-500/12 text-purple-300 px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold animate-pulse border border-purple-700/20 shadow-lg">
-                                ⭐ 3+ Years Experience
+                                🎙️ Real-time Voice AI
                             </div>
                             <div className="absolute top-1/2 -left-4 sm:-left-8 glass-card bg-gradient-to-r from-cyan-500/12 to-blue-500/12 text-cyan-300 px-2 py-1 sm:px-3 sm:py-2 text-xs font-bold animate-float border border-cyan-700/20 shadow-lg">
-                                💻 Full Stack
+                                🧠 LLM + RAG
                             </div>
                         </div>
                     </div>

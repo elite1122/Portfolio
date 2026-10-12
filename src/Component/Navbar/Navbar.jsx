@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const driveLink =
-    "https://drive.google.com/file/d/1JXEV3uQdJ7-VjIY0-wXCF9iLU5dfIyGV/view?usp=sharing";
+    "https://drive.google.com/file/d/1q8LywmTilOJTShI9wAiqfk7CN81Za3_1/view?usp=sharing";
 
   const navigateToResume = () => {
     window.open(driveLink, "_blank");
@@ -24,6 +24,7 @@ const Navbar = () => {
     { name: "Home", to: "home" },
     { name: "About", to: "about" },
     { name: "Skills", to: "skills" },
+    { name: "Experience", to: "experience" },
     { name: "Education", to: "education" },
     { name: "Projects", to: "projects" },
     { name: "Contact", to: "contact" },

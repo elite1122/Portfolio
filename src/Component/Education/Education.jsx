@@ -24,9 +24,9 @@ const Education = () => {
   const educationDetails = [
     {
       degree: 'B.Sc. in Computer Science & Engineering',
-      institution: 'Daffodil International University',
-      grades: 'CGPA: 3.89',
-      year: '2020-2023',
+      institution: 'Daffodil International University (DIU)',
+      grades: 'CGPA: 3.89 / 4.00',
+      year: '2020 - 2024',
       desc: "Completed my CSE degree from Daffodil International University, Savar, Dhaka. Gained comprehensive knowledge in software development, algorithms, data structures, and modern web technologies.",
       icon: '🎓',
       level: 'Bachelor\'s Degree',
@@ -55,10 +55,27 @@ const Education = () => {
   ];
 
   const achievements = [
-    { title: "Dean's List", desc: "Top 10% of graduating class", icon: "🏆" },
-    { title: "Perfect GPA", desc: "5.00 in both HSC & SSC", icon: "⭐" },
-    { title: "Programming Excellence", desc: "Multiple coding competitions", icon: "💻" },
-    { title: "Leadership", desc: "Student organization member", icon: "👥" }
+    { title: "CGPA 3.89 / 4.00", desc: "B.Sc. in CSE, Daffodil International University", icon: "🏆" },
+    { title: "Perfect GPA 5.00", desc: "Both HSC and SSC, Science stream", icon: "⭐" },
+    { title: "Programming Hero", desc: "Complete Web Development (Batch 10)", icon: "🎖️" },
+    { title: "Trilingual", desc: "Bangla, English, and Hindi", icon: "🌐" }
+  ];
+
+  const certifications = [
+    {
+      title: 'Complete Web Development (Batch 10)',
+      issuer: 'Programming Hero',
+      period: 'June 2024 — January 2025',
+      mode: 'Online',
+      icon: '🎖️',
+      color: 'from-cyan-500 to-blue-500',
+    },
+  ];
+
+  const languages = [
+    { name: 'Bangla', level: 'Native', icon: '🇧🇩' },
+    { name: 'English', level: 'Reading, Writing & Conversational', icon: '🇬🇧' },
+    { name: 'Hindi', level: 'Conversational', icon: '🇮🇳' },
   ];
 
   return (
@@ -157,6 +174,66 @@ const Education = () => {
                   {achievement.title}
                 </h4>
                 <p className="text-gray-300 text-xs lg:text-sm font-medium">{achievement.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Certifications */}
+        <div className="mt-16 lg:mt-20">
+          <h3 className="text-2xl lg:text-3xl font-bold text-center text-gray-100 mb-8 lg:mb-12">
+            <span className="gradient-text">Certifications</span>
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            {certifications.map((cert, index) => (
+              <div
+                key={cert.title}
+                className="glass-card p-5 lg:p-6 hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 group animate-fade-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="text-3xl lg:text-4xl">{cert.icon}</div>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span
+                        className={`px-2 lg:px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${cert.color} text-white shadow-md`}
+                      >
+                        {cert.mode}
+                      </span>
+                      <span className="text-gray-300 text-xs lg:text-sm font-semibold">
+                        {cert.period}
+                      </span>
+                    </div>
+                    <h4 className="text-base lg:text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors duration-300">
+                      {cert.title}
+                    </h4>
+                    <p className="text-cyan-300 font-bold text-sm lg:text-base mt-1">
+                      {cert.issuer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Languages */}
+        <div className="mt-16 lg:mt-20">
+          <h3 className="text-2xl lg:text-3xl font-bold text-center text-gray-100 mb-8 lg:mb-12">
+            <span className="gradient-text">Languages</span>
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+            {languages.map((lang, index) => (
+              <div
+                key={lang.name}
+                className="glass-card p-5 lg:p-6 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300 group animate-scale-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <div className="text-3xl lg:text-4xl mb-2">{lang.icon}</div>
+                <h4 className="text-base lg:text-lg font-bold text-gray-100 group-hover:text-cyan-400 transition-colors duration-300">
+                  {lang.name}
+                </h4>
+                <p className="text-gray-300 text-xs lg:text-sm font-medium mt-1">{lang.level}</p>
               </div>
             ))}
           </div>

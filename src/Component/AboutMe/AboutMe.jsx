@@ -23,19 +23,19 @@ const AboutMe = () => {
     }, []);
 
     const info = [
-        { text: "Years Experience", count: "3", icon: "⭐" },
-        { text: "Completed Projects", count: "50", icon: "🚀" },
-        { text: "Happy Clients", count: "25", icon: "😊" },
-        { text: "Technologies", count: "15", icon: "💻" },
+        { text: "AI Engineer @ Cognidrift", count: "1+", icon: "🤖" },
+        { text: "CGPA · CSE, DIU", count: "3.89", icon: "🎓" },
+        { text: "Production AI Projects", count: "5", icon: "🚀" },
+        { text: "Languages Spoken", count: "3", icon: "🌐" },
     ];
 
     const skills = [
-        "Problem Solving",
-        "Team Collaboration", 
-        "Clean Code",
-        "User Experience",
-        "Performance Optimization",
-        "Modern Frameworks"
+        "Agentic AI Architectures",
+        "Real-time Voice AI",
+        "LLM + RAG Pipelines",
+        "Node.js & Python Backends",
+        "Figma → Production UI",
+        "Scalable Cloud Architecture"
     ];
 
     return (
@@ -48,7 +48,7 @@ const AboutMe = () => {
                         About <span className="gradient-text">Me</span>
                     </h2>
                     <p className="section-subtitle">
-                        Passionate developer crafting exceptional digital experiences
+                        AI Developer & Full-Stack Engineer building agentic, voice-first products
                     </p>
                 </div>
 
@@ -60,20 +60,20 @@ const AboutMe = () => {
                                 My Journey
                             </h3>
                             <p className="text-gray-300 leading-relaxed text-base lg:text-lg">
-                                I have completed my CSE degree from Daffodil International University. 
-                                As a passionate developer, I believe that continuous learning and 
-                                collaboration are essential for success in this ever-evolving field.
+                                I'm an Innovative AI Developer and Full-Stack Engineer with specialized
+                                experience building Agentic AI solutions and autonomous Voice AI platforms.
+                                I integrate LLMs with real-time communication tools and orchestrate
+                                complex workflows in Node.js and Python.
                             </p>
                             <p className="text-gray-300 leading-relaxed text-base lg:text-lg">
-                                This portfolio represents my digital journey - documenting everything 
-                                I've learned, built, and aspired to achieve. I'm constantly pushing 
-                                boundaries and expanding my skill set because I believe there's always 
-                                room for growth.
+                                Currently I'm an Artificial Intelligence Engineer at Cognidrift (Utah, USA),
+                                where I ship AI-powered receptionist platforms — pairing real-time voice AI
+                                and NLP with Google Calendar and CRM automations on a scalable architecture.
                             </p>
                             <p className="text-gray-300 leading-relaxed text-base lg:text-lg">
-                                I love transforming complex problems into elegant solutions through 
-                                clean code and innovative design. Feel free to explore my work and 
-                                reach out if you'd like to collaborate!
+                                I graduated in Computer Science & Engineering from Daffodil International
+                                University with a CGPA of 3.89/4.00, and I have a proven track record of
+                                turning high-fidelity Figma designs into clean, AI-driven web architectures.
                             </p>
                         </div>
 
@@ -128,8 +128,8 @@ const AboutMe = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 className="text-gray-100 font-bold text-sm lg:text-base">Quality First</h4>
-                                        <p className="text-gray-300 text-sm lg:text-base">I prioritize clean, maintainable code and exceptional user experiences.</p>
+                                        <h4 className="text-gray-100 font-bold text-sm lg:text-base">Production AI, not demos</h4>
+                                        <p className="text-gray-300 text-sm lg:text-base">I ship Agentic AI and Voice AI systems that handle real users — not throwaway prototypes.</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 lg:gap-4 group">
@@ -139,8 +139,8 @@ const AboutMe = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 className="text-gray-100 font-bold text-sm lg:text-base">Continuous Learning</h4>
-                                        <p className="text-gray-300 text-sm lg:text-base">Always staying updated with the latest technologies and best practices.</p>
+                                        <h4 className="text-gray-100 font-bold text-sm lg:text-base">Full-Stack + AI Fluency</h4>
+                                        <p className="text-gray-300 text-sm lg:text-base">I move from React + Tailwind frontends to Node.js / Python backends and LLM orchestration without handoffs.</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 lg:gap-4 group">
@@ -150,8 +150,8 @@ const AboutMe = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 className="text-gray-100 font-bold text-sm lg:text-base">Collaborative Spirit</h4>
-                                        <p className="text-gray-300 text-sm lg:text-base">Strong communication skills and team-oriented approach to development.</p>
+                                        <h4 className="text-gray-100 font-bold text-sm lg:text-base">Design-to-Code Discipline</h4>
+                                        <p className="text-gray-300 text-sm lg:text-base">Proven track record of turning high-fidelity Figma designs into scalable, AI-driven web architectures.</p>
                                     </div>
                                 </div>
                             </div>

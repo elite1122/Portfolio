@@ -48,9 +48,9 @@ const ContactForm = () => {
             title: "WhatsApp",
             color: "from-green-500 to-emerald-500"
         },
-        { 
-            logo: "location", 
-            text: "Jhenaidah, Bangladesh",
+        {
+            logo: "location",
+            text: "Dhaka, Bangladesh",
             title: "Location",
             color: "from-purple-500 to-pink-500"
         },
