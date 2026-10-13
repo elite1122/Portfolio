@@ -3,6 +3,8 @@ import projectTwo from "../assets/project2.png";
 import projectThree from "../assets/project3.png";
 import projectFour from "../assets/Project4.png";
 import cognidriftImg from "../assets/cognidrift.png";
+import classioImg from "../assets/classio.png";
+import marathonImg from "../assets/marathon.png";
 
 export const projectsData = [
   {
@@ -43,6 +45,54 @@ export const projectsData = [
     ],
   },
   {
+    id: "classio",
+    img: classioImg,
+    name: "Classio — Full-Stack Restaurant ERP & Smart Ordering Platform",
+    tagline: "Bilingual Ordering, Real-Time POS, KDS & FIFO Inventory Engine",
+    period: "2025 – Present",
+    techStack: [
+      "React 18",
+      "Node.js",
+      "Express.js",
+      "MongoDB (Native Driver)",
+      "Tailwind CSS",
+      "JWT",
+      "Vite",
+    ],
+    description:
+      "Classio is a high-performance single-branch restaurant management system featuring a bilingual (EN/BN) customer ordering web app, real-time POS, Kitchen Display System (KDS), and automated procurement. Architected with native MongoDB driver multi-document ACID transactions, recipe-based FIFO inventory depletion, and financial drawer reconciliation.",
+    challenges:
+      "Engineered a Bill of Materials (BOM) inventory engine that automatically depletes raw ingredients using FIFO (First-In, First-Out) costing batches upon order confirmation to deliver accurate Cost of Goods Sold (COGS) analytics. Implemented double-entry principles separating payables from physical cash, featuring tamper-evident cashier daily drawer closing with opening float, cash sales, operational expenses, and surplus/shortage audit logs. Architected the backend using the official native MongoDB Node.js driver (MongoClient singleton) with ACID multi-document transactions without Mongoose, reducing query overhead and memory footprint.",
+    improvements:
+      "Multi-branch enterprise synchronization with cross-store transfer manifests, offline-first progressive POS caching with conflict-free background reconciliation, automated procurement re-orders via supplier APIs, and AI-driven daily dish demand forecasting.",
+    github_link: "https://github.com/elite1122", // Replace with your repository link if specific
+    live_link: null, // Replace with your live demo deployment URL
+    category: "Full Stack",
+    featured: false,
+    architecturePoints: [
+      {
+        title: "End-to-End Restaurant Management",
+        desc: "Bilingual (EN/BN) customer ordering web app, real-time POS, Kitchen Display System (KDS), and automated procurement.",
+      },
+      {
+        title: "Recipe-Based FIFO Inventory Engine",
+        desc: "Bill of Materials (BOM) engine that automatically depletes raw ingredients using FIFO costing batches upon order confirmation for accurate COGS analytics.",
+      },
+      {
+        title: "Financial Accounting & Shift Reconciliation",
+        desc: "Double-entry float balancing, sales auditing, operational expense logs, and tamper-evident cashier drawer closing.",
+      },
+      {
+        title: "High-Performance Native MongoDB",
+        desc: "ACID multi-document transactions using official native MongoClient singleton without Mongoose, minimizing latency and RAM overhead.",
+      },
+      {
+        title: "Security & Role-Based Access Control (RBAC)",
+        desc: "Least-privilege JWT authentication for Owner, Cashier, and Kitchen roles, rate limiting, and 45+ automated integration tests.",
+      },
+    ],
+  },
+  {
     id: "insightly",
     img: projectFour,
     name: "Insightly News — Modern Editorial Publishing Platform",
@@ -70,7 +120,7 @@ export const projectsData = [
   },
   {
     id: "marathon",
-    img: projectOne,
+    img: marathonImg,
     name: "Marathon Management System",
     tagline: "Role-Based Event Coordination & Registration Dashboard",
     techStack: [

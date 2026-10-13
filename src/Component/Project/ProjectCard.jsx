@@ -87,28 +87,30 @@ const ProjectCard = ({ project, onSelect }) => {
           </a>
         )}
 
-        <a
-          href={project.live_link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 rounded-lg bg-obsidian-800 border border-obsidian-700 text-ivory-300 hover:text-lime-accent hover:border-obsidian-600 transition-colors"
-          aria-label={`Open ${project.name} live deployment`}
-        >
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-            aria-hidden="true"
+        {project.live_link && (
+          <a
+            href={project.live_link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-lg bg-obsidian-800 border border-obsidian-700 text-ivory-300 hover:text-lime-accent hover:border-obsidian-600 transition-colors"
+            aria-label={`Open ${project.name} live deployment`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-            />
-          </svg>
-        </a>
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+              />
+            </svg>
+          </a>
+        )}
       </div>
     </motion.article>
   );

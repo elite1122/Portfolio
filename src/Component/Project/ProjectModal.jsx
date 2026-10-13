@@ -115,6 +115,31 @@ const ProjectModal = ({ project, onClose }) => {
             </p>
           </div>
 
+          {/* Architectural Modules / Engineering Pillars (if provided) */}
+          {project.architecturePoints && project.architecturePoints.length > 0 && (
+            <div className="space-y-3">
+              <h4 className="font-mono text-xs uppercase tracking-wider text-lime-accent font-semibold">
+                Core Architectural Pillars &amp; Engineering Modules
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {project.architecturePoints.map((pt) => (
+                  <div
+                    key={pt.title}
+                    className="p-3.5 rounded-lg bg-obsidian-850/90 border border-obsidian-800"
+                  >
+                    <div className="font-mono text-xs text-lime-accent font-semibold flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+                      {pt.title}
+                    </div>
+                    <p className="font-sans text-xs text-ivory-400 mt-1.5 leading-relaxed">
+                      {pt.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Challenges */}
           <div className="space-y-2">
             <h4 className="font-mono text-xs uppercase tracking-wider text-lime-accent font-semibold">
@@ -147,14 +172,16 @@ const ProjectModal = ({ project, onClose }) => {
                 View Source on GitHub
               </a>
             )}
-            <a
-              href={project.live_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="editorial-btn-primary flex-1 text-center text-xs font-mono py-2.5"
-            >
-              Visit Live Deployment
-            </a>
+            {project.live_link && (
+              <a
+                href={project.live_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="editorial-btn-primary flex-1 text-center text-xs font-mono py-2.5"
+              >
+                Visit Live Deployment
+              </a>
+            )}
           </div>
         </div>
       </motion.div>
