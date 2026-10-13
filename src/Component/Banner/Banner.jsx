@@ -5,7 +5,7 @@ import MotionReveal from "../Common/MotionReveal";
 
 const Banner = () => {
   const driveLink =
-    "https://drive.google.com/file/d/1q8LywmTilOJTShI9wAiqfk7CN81Za3_1/view?usp=sharing";
+    "https://drive.google.com/file/d/1ZG7w3i65OOZ8gJhQsv5pxb_wdIYZOmrX/view?usp=sharing";
 
   const socialLinks = [
     {

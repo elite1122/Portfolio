@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const driveLink =
-    "https://drive.google.com/file/d/1q8LywmTilOJTShI9wAiqfk7CN81Za3_1/view?usp=sharing";
+    "https://drive.google.com/file/d/1ZG7w3i65OOZ8gJhQsv5pxb_wdIYZOmrX/view?usp=sharing";
 
   const navigateToResume = () => {
     window.open(driveLink, "_blank", "noopener,noreferrer");
