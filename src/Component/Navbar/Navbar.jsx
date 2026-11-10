@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
+import { motion, useScroll, useReducedMotion } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll();
 
   const driveLink =
     "https://drive.google.com/file/d/1ZG7w3i65OOZ8gJhQsv5pxb_wdIYZOmrX/view?usp=sharing";
@@ -170,6 +173,15 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Scroll progress bar — lime line under navbar */}
+      {!shouldReduceMotion && (
+        <motion.div
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 h-[2px] bg-lime-accent origin-left w-full pointer-events-none"
+          style={{ scaleX: scrollYProgress }}
+        />
+      )}
 
       {/* Mobile Navigation Dropdown Menu */}
       <div

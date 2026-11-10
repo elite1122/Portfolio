@@ -1,7 +1,100 @@
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { experienceData } from "../../data/experienceData";
 import MotionReveal from "../Common/MotionReveal";
 
+/* ─── Responsibilities expander ─────────────────────────────────── */
+const ResponsibilitiesExpander = ({ responsibilities }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = responsibilities.length > 2;
+
+  if (shouldReduceMotion) {
+    return (
+      <ul className="space-y-2.5">
+        {responsibilities.map((r, i) => (
+          <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-ivory-400 leading-relaxed">
+            <span className="w-1.5 h-1.5 rounded-full bg-lime-accent mt-2 shrink-0" aria-hidden="true" />
+            <span>{r}</span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  return (
+    <div>
+      <ul className="space-y-2.5">
+        {responsibilities.slice(0, 2).map((r, i) => (
+          <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-ivory-400 leading-relaxed">
+            <span className="w-1.5 h-1.5 rounded-full bg-lime-accent mt-2 shrink-0" aria-hidden="true" />
+            <span>{r}</span>
+          </li>
+        ))}
+      </ul>
+
+      <AnimatePresence initial={false}>
+        {expanded && hasMore && (
+          <motion.div
+            key="extras"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <ul className="space-y-2.5 mt-2.5">
+              {responsibilities.slice(2).map((r, i) => (
+                <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-ivory-400 leading-relaxed">
+                  <span className="w-1.5 h-1.5 rounded-full bg-lime-accent mt-2 shrink-0" aria-hidden="true" />
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {hasMore && (
+        <button
+          onClick={() => setExpanded((v) => !v)}
+          className="mt-3 font-mono text-xs text-lime-accent/70 hover:text-lime-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent rounded px-1"
+          aria-expanded={expanded}
+        >
+          {expanded ? "↑ Show less" : `↓ Show all ${responsibilities.length} responsibilities`}
+        </button>
+      )}
+    </div>
+  );
+};
+
+/* ─── Scroll-draw timeline line ─────────────────────────────────── */
+const TimelineLine = ({ containerRef }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start 80%", "end 20%"] });
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  if (shouldReduceMotion) {
+    return (
+      <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-[2px] bg-lime-accent/25 rounded-full" aria-hidden="true" />
+    );
+  }
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      className="hidden lg:block absolute left-0 top-0 bottom-0 w-[2px] bg-lime-accent/35 rounded-full origin-top"
+      style={{ scaleY }}
+    />
+  );
+};
+
+/* ═══════════════════════════════════════════════════════════════════
+   Experience Section
+   ═══════════════════════════════════════════════════════════════════ */
 const Experience = () => {
+  const containerRef = useRef(null);
+
   return (
     <section
       id="experience"
@@ -12,7 +105,7 @@ const Experience = () => {
       <MotionReveal>
         <div className="mb-12 sm:mb-16">
           <div className="editorial-eyebrow mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-lime-accent" aria-hidden="true" />
             <span>02 // Chronology</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory-100 tracking-tight">
@@ -25,92 +118,85 @@ const Experience = () => {
         </div>
       </MotionReveal>
 
-      {/* Structured Editorial Timeline */}
-      <div className="space-y-8 lg:space-y-10">
-        {experienceData.map((exp, index) => (
-          <MotionReveal key={exp.id} delay={index * 0.1}>
-            <div
-              className="editorial-card !p-0 overflow-hidden border-obsidian-700/80 hover:border-obsidian-600 transition-all duration-200 shadow-xl"
-            >
-            {/* Header Telemetry Row */}
-            <div className="px-5 sm:px-8 py-3.5 bg-obsidian-900 border-b border-obsidian-800 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-ivory-400">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-lime-accent"></span>
-                <span className="text-ivory-200 font-semibold uppercase tracking-wider">
-                  {`ROLE 0${index + 1} // ${exp.company.toUpperCase()}`}
-                </span>
-              </div>
-              <div className="flex items-center gap-3 text-[11px]">
-                <span className="text-lime-accent font-medium">
-                  {exp.period}
-                </span>
-                <span className="text-obsidian-600">/</span>
-                <span className="text-ivory-500">
-                  {exp.location}
-                </span>
-              </div>
-            </div>
+      {/* Timeline wrapper */}
+      <div ref={containerRef} className="relative lg:pl-8">
+        {/* Scroll-drawn vertical line */}
+        <TimelineLine containerRef={containerRef} />
 
-            {/* Main Content Body */}
-            <div className="p-6 sm:p-8 lg:p-10 space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                <div>
-                  <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-ivory-100 tracking-tight">
-                    {exp.role}
-                  </h3>
-                  <div className="font-mono text-sm text-lime-accent font-medium mt-1">
-                    {exp.company}
+        <div className="space-y-8 lg:space-y-10">
+          {experienceData.map((exp, index) => (
+            <MotionReveal key={exp.id} delay={index * 0.08}>
+              <div className="relative">
+                {/* Timeline dot — desktop */}
+                <div
+                  aria-hidden="true"
+                  className={`hidden lg:block absolute -left-[2.35rem] top-6 w-3 h-3 rounded-full border-2 border-obsidian-900 z-10
+                    ${index === 0 ? "bg-lime-accent animate-pulse" : "bg-lime-accent/50"}`}
+                />
+
+                <div className="editorial-card !p-0 overflow-hidden border-obsidian-700/80 hover:border-obsidian-600 transition-all duration-200 shadow-xl">
+                  {/* Header Telemetry Row */}
+                  <div className="px-5 sm:px-8 py-3.5 bg-obsidian-900 border-b border-obsidian-800 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-ivory-400">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-lime-accent" aria-hidden="true" />
+                      <span className="text-ivory-200 font-semibold uppercase tracking-wider">
+                        {`ROLE 0${index + 1} // ${exp.company.toUpperCase()}`}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 text-xs">
+                      <span className="text-lime-accent font-medium">{exp.period}</span>
+                      <span className="text-obsidian-600" aria-hidden="true">/</span>
+                      <span className="text-ivory-500">{exp.location}</span>
+                    </div>
+                  </div>
+
+                  {/* Main Content Body */}
+                  <div className="p-6 sm:p-8 lg:p-10 space-y-6">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                      <div>
+                        <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-ivory-100 tracking-tight">
+                          {exp.role}
+                        </h3>
+                        <div className="font-mono text-sm text-lime-accent font-medium mt-1">{exp.company}</div>
+                      </div>
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-obsidian-900 border border-obsidian-800 text-xs font-mono text-ivory-400 self-start sm:self-auto shrink-0">
+                        <span className="w-1.5 h-1.5 rounded-full bg-ivory-500" aria-hidden="true" />
+                        <span>TENURE CONCLUDED</span>
+                      </div>
+                    </div>
+
+                    {/* Summary */}
+                    <p className="font-sans text-sm sm:text-base text-ivory-300 leading-relaxed max-w-3xl">
+                      {exp.summary}
+                    </p>
+
+                    {/* Responsibilities with expander */}
+                    <div className="space-y-3 pt-2">
+                      <div className="font-mono text-xs uppercase tracking-wider text-ivory-400 font-semibold">
+                        Core Engineering Responsibilities:
+                      </div>
+                      <ResponsibilitiesExpander responsibilities={exp.responsibilities} />
+                    </div>
+
+                    {/* Stack Chips */}
+                    <div className="pt-4 border-t border-obsidian-800/80">
+                      <div className="font-mono text-xs uppercase tracking-wider text-ivory-500 mb-2">
+                        Key Technologies &amp; Frameworks:
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {exp.stack.map((tech) => (
+                          <span key={tech} className="editorial-badge text-xs hover:border-lime-accent/30 transition-colors">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-obsidian-900 border border-obsidian-800 text-[11px] font-mono text-ivory-400 self-start sm:self-auto">
-                  <span className="w-1.5 h-1.5 rounded-full bg-ivory-500"></span>
-                  <span>TENURE CONCLUDED</span>
-                </div>
               </div>
-
-              {/* High-level Summary */}
-              <p className="font-sans text-sm sm:text-base text-ivory-300 leading-relaxed max-w-3xl">
-                {exp.summary}
-              </p>
-
-              {/* Responsibilities Bullets */}
-              <div className="space-y-3 pt-2">
-                <div className="font-mono text-xs uppercase tracking-wider text-ivory-400 font-semibold">
-                  Core Engineering Responsibilities:
-                </div>
-                <ul className="space-y-2.5">
-                  {exp.responsibilities.map((resp, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-3 text-xs sm:text-sm text-ivory-400 leading-relaxed"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-lime-accent mt-2 flex-shrink-0" />
-                      <span>{resp}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Stack Chips */}
-              <div className="pt-4 border-t border-obsidian-800/80">
-                <div className="font-mono text-[11px] uppercase tracking-wider text-ivory-500 mb-2">
-                  Key Technologies &amp; Frameworks:
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {exp.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="editorial-badge !text-[11px] hover:border-lime-accent/30 transition-colors"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-            </div>
-          </MotionReveal>
-        ))}
+            </MotionReveal>
+          ))}
+        </div>
       </div>
     </section>
   );

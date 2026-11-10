@@ -18,6 +18,7 @@
     font-feature-settings: 'cv01', 'cv03', 'cv04', 'cv11';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.65;
   }
 
   ::selection {
@@ -131,6 +132,20 @@
 @layer utilities {
   .font-editorial-serif {
     font-family: 'Instrument Serif', Georgia, serif;
+  }
+
+  /* Infinite horizontal marquee */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 28s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 }
 
