@@ -50,7 +50,7 @@ const ViewCursor = () => {
       animate={{ scale: active ? 1 : 0, opacity: visible ? 1 : 0 }}
       transition={{ type: "spring", stiffness: 400, damping: 22 }}
     >
-      <span className="font-mono text-[10px] font-bold text-obsidian-950 uppercase tracking-wider select-none">
+      <span className="font-mono text-xs font-bold text-obsidian-950 uppercase tracking-wider select-none">
         View
       </span>
     </motion.div>,

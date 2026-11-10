@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 import MotionReveal from "../Common/MotionReveal";
+import { lineDraw } from "../Common/motionVariants";
 
 const ContactForm = () => {
   const form = useRef();
@@ -227,6 +229,16 @@ const ContactForm = () => {
             Available for conversational AI engineering, voice agent architecture, and full-stack system contracts.
             Send a direct transmission or connect via verified channels below.
           </p>
+
+          {/* Thin animated accent rule drawing in on reveal */}
+          <motion.div
+            variants={lineDraw}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-20px" }}
+            className="h-[1px] bg-gradient-to-r from-lime-accent/50 via-obsidian-700 to-transparent mt-6 origin-left"
+            aria-hidden="true"
+          />
         </div>
       </MotionReveal>
 
@@ -235,7 +247,7 @@ const ContactForm = () => {
         <MotionReveal className="lg:col-span-7" delay={0.1}>
           <div className="editorial-card !p-0 overflow-hidden border-obsidian-700/80 shadow-2xl">
             {/* Header Telemetry Bar */}
-            <div className="px-5 sm:px-6 py-3.5 bg-obsidian-900 border-b border-obsidian-800 flex items-center justify-between font-mono text-[11px] text-ivory-400">
+            <div className="px-5 sm:px-6 py-3.5 bg-obsidian-900 border-b border-obsidian-800 flex items-center justify-between font-mono text-xs text-ivory-400">
               <span className="text-lime-accent flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-lime-accent"></span>
                 <span>DIRECT_TRANSMISSION // FORM</span>
@@ -431,7 +443,7 @@ const ContactForm = () => {
         <MotionReveal className="lg:col-span-5 space-y-6" delay={0.2}>
           {/* Direct Verified Channels Card */}
           <div className="editorial-card !p-0 overflow-hidden border-obsidian-700/80">
-            <div className="px-5 sm:px-6 py-3.5 bg-obsidian-900 border-b border-obsidian-800 font-mono text-[11px] text-lime-accent uppercase tracking-wider flex items-center justify-between">
+            <div className="px-5 sm:px-6 py-3.5 bg-obsidian-900 border-b border-obsidian-800 font-mono text-xs text-lime-accent uppercase tracking-wider flex items-center justify-between">
               <span>Direct Verified Channels</span>
               <span className="text-ivory-500">AUTHENTICATED</span>
             </div>
@@ -444,14 +456,14 @@ const ContactForm = () => {
                       {channel.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-mono text-[11px] uppercase tracking-wider text-ivory-500">
+                      <div className="font-mono text-xs uppercase tracking-wider text-ivory-500">
                         {channel.title}
                       </div>
                       <div className="font-heading font-medium text-sm text-ivory-100 truncate mt-0.5">
                         {channel.value}
                       </div>
                     </div>
-                    <div className="font-mono text-[10px] text-lime-accent self-center">
+                    <div className="font-mono text-xs text-lime-accent self-center">
                       {channel.actionLabel}
                     </div>
                   </div>
@@ -477,7 +489,7 @@ const ContactForm = () => {
 
           {/* Operational Status Card */}
           <div className="editorial-card p-5 sm:p-6 border-obsidian-700/80 space-y-3.5">
-            <div className="font-mono text-[11px] uppercase tracking-wider text-ivory-400 font-semibold flex items-center gap-2">
+            <div className="font-mono text-xs uppercase tracking-wider text-ivory-400 font-semibold flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-lime-accent animate-pulse"></span>
               <span>Operational Status</span>
             </div>
@@ -500,7 +512,7 @@ const ContactForm = () => {
 
           {/* Social Profiles Grid */}
           <div className="editorial-card p-5 sm:p-6 border-obsidian-700/80">
-            <div className="font-mono text-[11px] uppercase tracking-wider text-ivory-400 font-semibold mb-3">
+            <div className="font-mono text-xs uppercase tracking-wider text-ivory-400 font-semibold mb-3">
               Verified Social Profiles
             </div>
             <div className="flex items-center gap-2.5">
@@ -514,7 +526,7 @@ const ContactForm = () => {
                   aria-label={`Open ${social.label} profile`}
                 >
                   {social.icon}
-                  <span className="hidden sm:inline text-[11px]">{social.label}</span>
+                  <span className="hidden sm:inline text-xs">{social.label}</span>
                 </a>
               ))}
             </div>

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { projectsData } from "../../data/projectsData";
 import ProjectCard from "./ProjectCard";
@@ -6,7 +6,7 @@ import ProjectDetail from "./ProjectDetail";
 import StackingCards from "./StackingCards";
 import ViewCursor from "../Common/ViewCursor";
 import MotionReveal from "../Common/MotionReveal";
-import { staggerContainer, staggerChild, EASE } from "../Common/motionVariants";
+import { staggerContainer, staggerChild, lineDraw, EASE } from "../Common/motionVariants";
 
 /* ─── SVG Icons ──────────────────────────────────────────────────── */
 const IconArrow = ({ className = "w-3.5 h-3.5" }) => (
@@ -64,6 +64,7 @@ const FlagshipMockup = ({ project, onSelect }) => {
   const shouldReduceMotion = useReducedMotion();
   const [imgLoaded, setImgLoaded] = useState(false);
   const mockupRef = useRef(null);
+  const videoRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: mockupRef,
@@ -75,6 +76,20 @@ const FlagshipMockup = ({ project, onSelect }) => {
     [0, 1],
     shouldReduceMotion ? [0, 0] : [-20, 20]
   );
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid || shouldReduceMotion) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) vid.play().catch(() => {});
+        else vid.pause();
+      },
+      { threshold: 0.3 }
+    );
+    obs.observe(vid);
+    return () => obs.disconnect();
+  }, [shouldReduceMotion, project.id]);
 
   return (
     <motion.div
@@ -95,36 +110,50 @@ const FlagshipMockup = ({ project, onSelect }) => {
           <span className="w-2.5 h-2.5 rounded-full bg-lime-accent/70" aria-hidden="true" />
         </div>
 
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-obsidian-900 border border-obsidian-800 text-[11px] text-ivory-300 max-w-[240px] truncate">
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-obsidian-900 border border-obsidian-800 text-xs text-ivory-300 max-w-[240px] truncate">
           <svg className="w-2.5 h-2.5 text-lime-accent/80 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
           </svg>
           <span className="truncate">{project.live_link || "cognidrift.com"}</span>
         </div>
 
-        <div className="flex items-center gap-1.5 text-[11px] text-lime-accent font-mono">
+        <div className="flex items-center gap-1.5 text-xs text-lime-accent font-mono">
           <span className="w-1.5 h-1.5 rounded-full bg-lime-accent animate-ping" aria-hidden="true" />
           <span>200 OK</span>
         </div>
       </div>
 
-      {/* Screenshot */}
+      {/* Video or Screenshot */}
       <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-        {!imgLoaded && (
-          <div className="absolute inset-0 bg-obsidian-900 animate-pulse" aria-hidden="true" />
+        {project.video && !shouldReduceMotion ? (
+          <video
+            ref={videoRef}
+            src={project.video}
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover object-top"
+            aria-label={`${project.name} video demonstration`}
+          />
+        ) : (
+          <>
+            {!imgLoaded && (
+              <div className="absolute inset-0 bg-obsidian-900 animate-pulse" aria-hidden="true" />
+            )}
+            <img
+              src={project.img}
+              alt={`${project.name} platform interface`}
+              loading="lazy"
+              decoding="async"
+              width={1280}
+              height={720}
+              onLoad={() => setImgLoaded(true)}
+              className={`w-full h-full object-cover object-top transition-all duration-700
+                group-hover:scale-[1.02]
+                ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+            />
+          </>
         )}
-        <img
-          src={project.img}
-          alt={`${project.name} platform interface`}
-          loading="lazy"
-          decoding="async"
-          width={1280}
-          height={720}
-          onLoad={() => setImgLoaded(true)}
-          className={`w-full h-full object-cover object-top transition-all duration-700
-            group-hover:scale-[1.02]
-            ${imgLoaded ? "opacity-100" : "opacity-0"}`}
-        />
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/50 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
       </div>
     </motion.div>
@@ -352,7 +381,7 @@ const FilterBar = ({ active, onChange }) => {
             <span className="relative z-10">{cat}</span>
             {/* Count badge */}
             <span
-              className={`relative z-10 px-1.5 py-0.5 rounded text-[10px] font-bold leading-none
+              className={`relative z-10 px-1.5 py-0.5 rounded text-xs font-bold leading-none
                 ${isActive ? "bg-obsidian-950/20 text-obsidian-950" : "bg-obsidian-800 text-ivory-500"}`}
             >
               {categoryCounts[cat]}
@@ -391,7 +420,7 @@ const Project = () => {
     >
       {/* ── Section header ──────────────────────────────────────── */}
       <MotionReveal>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div>
             <div className="editorial-eyebrow mb-2">
               <span className="w-1.5 h-1.5 rounded-full bg-lime-accent" aria-hidden="true" />
@@ -409,6 +438,16 @@ const Project = () => {
           {/* Filter bar */}
           <FilterBar active={activeCategory} onChange={setActiveCategory} />
         </div>
+
+        {/* Thin animated accent rule drawing in on reveal */}
+        <motion.div
+          variants={lineDraw}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-20px" }}
+          className="h-[1px] bg-gradient-to-r from-lime-accent/50 via-obsidian-700 to-transparent mb-12 sm:mb-16 origin-left"
+          aria-hidden="true"
+        />
       </MotionReveal>
 
       {/* ── Flagship showcase ──────────────────────────────────── */}

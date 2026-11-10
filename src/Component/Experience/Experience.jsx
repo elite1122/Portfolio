@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { experienceData } from "../../data/experienceData";
 import MotionReveal from "../Common/MotionReveal";
+import { lineDraw } from "../Common/motionVariants";
 
 /* ─── Responsibilities expander ─────────────────────────────────── */
 const ResponsibilitiesExpander = ({ responsibilities }) => {
@@ -115,6 +116,16 @@ const Experience = () => {
             Verified industry tenure engineering autonomous voice AI systems, conversational
             receptionists, LLM integrations, and modern full-stack web applications.
           </p>
+
+          {/* Thin animated accent rule drawing in on reveal */}
+          <motion.div
+            variants={lineDraw}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-20px" }}
+            className="h-[1px] bg-gradient-to-r from-lime-accent/50 via-obsidian-700 to-transparent mt-6 origin-left"
+            aria-hidden="true"
+          />
         </div>
       </MotionReveal>
 

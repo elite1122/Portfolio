@@ -167,37 +167,37 @@ const Banner = () => {
             {/* Verified Credentials Telemetry Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 sm:pt-6 border-t border-obsidian-800">
               <div className="p-3.5 rounded-lg bg-obsidian-900/80 border border-obsidian-800">
-                <div className="font-mono text-[11px] text-lime-accent uppercase tracking-wider">
+                <div className="font-mono text-xs text-lime-accent uppercase tracking-wider">
                   CogniDrift
                 </div>
                 <div className="font-sans text-xs text-ivory-300 font-medium mt-0.5">
                   AI Engineer
                 </div>
-                <div className="font-mono text-[10px] text-ivory-500 mt-1">
+                <div className="font-mono text-xs text-ivory-500 mt-1">
                   Voice AI &amp; Receptionists
                 </div>
               </div>
 
               <div className="p-3.5 rounded-lg bg-obsidian-900/80 border border-obsidian-800">
-                <div className="font-mono text-[11px] text-lime-accent uppercase tracking-wider">
+                <div className="font-mono text-xs text-lime-accent uppercase tracking-wider">
                   Developer World
                 </div>
                 <div className="font-sans text-xs text-ivory-300 font-medium mt-0.5">
                   AI Engineer
                 </div>
-                <div className="font-mono text-[10px] text-ivory-500 mt-1">
+                <div className="font-mono text-xs text-ivory-500 mt-1">
                   STT/TTS &amp; Calling Agents
                 </div>
               </div>
 
               <div className="p-3.5 rounded-lg bg-obsidian-900/80 border border-obsidian-800">
-                <div className="font-mono text-[11px] text-lime-accent uppercase tracking-wider">
+                <div className="font-mono text-xs text-lime-accent uppercase tracking-wider">
                   DIU CSE
                 </div>
                 <div className="font-sans text-xs text-ivory-300 font-medium mt-0.5">
                   CGPA 3.89 / 4.00
                 </div>
-                <div className="font-mono text-[10px] text-ivory-500 mt-1">
+                <div className="font-mono text-xs text-ivory-500 mt-1">
                   B.Sc. in Comp. Science
                 </div>
               </div>
@@ -208,12 +208,12 @@ const Banner = () => {
           <MotionReveal className="lg:col-span-5 flex justify-center lg:justify-end" delay={0.15}>
             <div className="w-full max-w-sm sm:max-w-md bg-obsidian-900 border border-obsidian-700 rounded-xl overflow-hidden shadow-2xl shadow-black/80">
               {/* Studio Workspace Header Bar */}
-              <div className="px-4 py-2.5 bg-obsidian-950 border-b border-obsidian-800 flex items-center justify-between font-mono text-[11px] text-ivory-400">
+              <div className="px-4 py-2.5 bg-obsidian-950 border-b border-obsidian-800 flex items-center justify-between font-mono text-xs text-ivory-400">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-lime-accent"></span>
                   <span className="text-ivory-300 font-medium">ELITE // PORTRAIT</span>
                 </div>
-                <span className="text-ivory-500 text-[10px]">AUTH_VERIFIED</span>
+                <span className="text-ivory-500 text-xs">AUTH_VERIFIED</span>
               </div>
 
               {/* Cropped Profile Image Container (Verified 1535x2048 asset) */}
@@ -241,7 +241,7 @@ const Banner = () => {
                 </div>
 
                 <div className="flex items-center justify-between pt-2 border-t border-obsidian-800/80 text-xs font-mono text-ivory-400">
-                  <div className="flex items-center gap-1.5 text-[11px]">
+                  <div className="flex items-center gap-1.5 text-xs">
                     <svg
                       className="w-3.5 h-3.5 text-lime-accent"
                       fill="none"
@@ -286,7 +286,7 @@ const Banner = () => {
         </div>
 
         {/* Intentional Transition Indicator into Next Section */}
-        <div className="mt-14 sm:mt-16 pt-6 border-t border-obsidian-800/60 flex items-center justify-between font-mono text-[11px] text-ivory-500">
+        <div className="mt-14 sm:mt-16 pt-6 border-t border-obsidian-800/60 flex items-center justify-between font-mono text-xs text-ivory-500">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
             <span>SYSTEM_ONLINE // PRODUCTION_READY</span>

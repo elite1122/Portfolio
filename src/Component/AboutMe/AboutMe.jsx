@@ -1,5 +1,7 @@
 import { Link } from "react-scroll";
+import { motion } from "framer-motion";
 import MotionReveal from "../Common/MotionReveal";
+import { lineDraw } from "../Common/motionVariants";
 
 const AboutMe = () => {
   const driveLink =
@@ -47,6 +49,16 @@ const AboutMe = () => {
               &amp; Full-Stack Systems.
             </span>
           </h2>
+
+          {/* Thin animated accent rule drawing in on reveal */}
+          <motion.div
+            variants={lineDraw}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-20px" }}
+            className="h-[1px] bg-gradient-to-r from-lime-accent/50 via-obsidian-700 to-transparent mt-4 mb-6 origin-left"
+            aria-hidden="true"
+          />
 
           <div className="space-y-4 font-sans text-sm sm:text-base text-ivory-400 leading-relaxed">
             <p>
@@ -114,7 +126,7 @@ const AboutMe = () => {
         <MotionReveal className="lg:col-span-5 space-y-4" delay={0.15}>
           <div className="px-4 py-2 bg-obsidian-900 border border-obsidian-800 rounded-lg font-mono text-xs text-lime-accent uppercase tracking-wider flex items-center justify-between">
             <span>Engineering Principles</span>
-            <span className="text-ivory-500 text-[10px]">VERIFIED_APPROACH</span>
+            <span className="text-ivory-500 text-xs">VERIFIED_APPROACH</span>
           </div>
 
           <div className="space-y-3">

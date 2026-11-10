@@ -62,7 +62,7 @@ const Footer = () => {
               <span className="font-heading font-bold text-2xl tracking-tight text-ivory-100">
                 ELITE
               </span>
-              <span className="font-mono text-[10px] text-lime-accent uppercase tracking-wider bg-lime-muted border border-lime-border px-2 py-0.5 rounded">
+              <span className="font-mono text-xs text-lime-accent uppercase tracking-wider bg-lime-muted border border-lime-border px-2 py-0.5 rounded">
                 AI ENGINEER &amp; FULL STACK
               </span>
             </div>

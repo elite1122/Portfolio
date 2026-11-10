@@ -65,47 +65,56 @@ function useFocusTrap(containerRef, active) {
 const Gallery = ({ images }) => {
   const [idx, setIdx] = useState(0);
   const touchX = useRef(null);
-  const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
-  const next = () => setIdx((i) => (i + 1) % images.length);
+  const prev = useCallback(() => setIdx((i) => (i - 1 + images.length) % images.length), [images.length]);
+  const next = useCallback(() => setIdx((i) => (i + 1) % images.length), [images.length]);
 
   useEffect(() => {
+    if (images.length <= 1) return;
     const h = (e) => { if (e.key === "ArrowLeft") prev(); if (e.key === "ArrowRight") next(); };
     window.addEventListener("keydown", h);
     return () => window.removeEventListener("keydown", h);
-  });
+  }, [images.length, prev, next]);
+
+  if (!images?.length) return null;
 
   return (
     <div className="space-y-3">
       <div className="font-mono text-xs uppercase tracking-wider text-lime-accent font-semibold">
-        Gallery — {idx + 1} / {images.length}
+        {images.length > 1 ? `Gallery — ${idx + 1} / ${images.length}` : "Project Interface"}
       </div>
       <div
         className="relative aspect-video rounded-lg overflow-hidden border border-obsidian-700 bg-obsidian-950"
         onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
-          if (touchX.current == null) return;
+          if (touchX.current == null || images.length <= 1) return;
           const dx = e.changedTouches[0].clientX - touchX.current;
           if (dx > 48) prev(); else if (dx < -48) next();
           touchX.current = null;
         }}
       >
-        <img src={images[idx]} alt={`Gallery ${idx + 1} of ${images.length}`} loading="lazy" width={1280} height={720}
-          className="w-full h-full object-cover" />
-        <button onClick={prev} aria-label="Previous image"
-          className="absolute left-3 top-1/2 -translate-y-1/2 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg bg-obsidian-950/70 text-ivory-200 hover:text-lime-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent">
-          <IconLeft />
-        </button>
-        <button onClick={next} aria-label="Next image"
-          className="absolute right-3 top-1/2 -translate-y-1/2 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg bg-obsidian-950/70 text-ivory-200 hover:text-lime-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent">
-          <IconRight />
-        </button>
+        <img src={images[idx]} alt={`Gallery view ${idx + 1} of ${images.length}`} loading="lazy" width={1280} height={720}
+          className="w-full h-full object-cover object-top" />
+        {images.length > 1 && (
+          <>
+            <button onClick={prev} aria-label="Previous image"
+              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg bg-obsidian-950/70 text-ivory-200 hover:text-lime-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent">
+              <IconLeft />
+            </button>
+            <button onClick={next} aria-label="Next image"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg bg-obsidian-950/70 text-ivory-200 hover:text-lime-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent">
+              <IconRight />
+            </button>
+          </>
+        )}
       </div>
-      <div className="flex gap-1.5 justify-center">
-        {images.map((_, i) => (
-          <button key={i} onClick={() => setIdx(i)} aria-label={`Image ${i + 1}`} aria-current={i === idx}
-            className={`w-2 h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent ${i === idx ? "bg-lime-accent scale-125" : "bg-obsidian-700 hover:bg-obsidian-600"}`} />
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div className="flex gap-1.5 justify-center" aria-label="Gallery navigation">
+          {images.map((_, i) => (
+            <button key={i} onClick={() => setIdx(i)} aria-label={`Image ${i + 1}`} aria-current={i === idx}
+              className={`w-2 h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-accent ${i === idx ? "bg-lime-accent scale-125" : "bg-obsidian-700 hover:bg-obsidian-600"}`} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
@@ -187,9 +196,18 @@ const ProjectDetail = ({ project, onClose, projects = [], currentIndex = 0, onNa
                    rounded-t-2xl sm:rounded-2xl overflow-hidden"
       >
         {/* Mobile drag handle */}
-        <div className="sm:hidden flex justify-center pt-3 pb-1 shrink-0" aria-hidden="true">
-          <div className="w-10 h-1 rounded-full bg-obsidian-700" />
-        </div>
+        <motion.div
+          drag="y"
+          dragConstraints={{ top: 0, bottom: 0 }}
+          dragElastic={{ top: 0, bottom: 0.6 }}
+          onDragEnd={(_, info) => {
+            if (info.offset.y > 60 || info.velocity.y > 300) handleClose();
+          }}
+          className="sm:hidden flex justify-center pt-3 pb-2 shrink-0 cursor-grab active:cursor-grabbing touch-none"
+          aria-label="Drag down to close"
+        >
+          <div className="w-12 h-1.5 rounded-full bg-obsidian-700 active:bg-lime-accent/80 transition-colors" />
+        </motion.div>
 
         {/* Sticky top bar */}
         <div className="shrink-0 bg-obsidian-950/95 backdrop-blur-md px-5 sm:px-8 py-3 border-b border-obsidian-800 flex items-center justify-between gap-3">
@@ -218,7 +236,7 @@ const ProjectDetail = ({ project, onClose, projects = [], currentIndex = 0, onNa
                   <span className="w-2 h-2 rounded-full bg-yellow-400/70" aria-hidden="true" />
                   <span className="w-2 h-2 rounded-full bg-lime-accent/70" aria-hidden="true" />
                 </div>
-                <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-obsidian-950 border border-obsidian-800 font-mono text-[11px] text-ivory-400 max-w-[200px] sm:max-w-xs truncate">
+                <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-obsidian-950 border border-obsidian-800 font-mono text-xs text-ivory-400 max-w-[200px] sm:max-w-xs truncate">
                   <svg className="w-2.5 h-2.5 text-lime-accent/70 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                   </svg>

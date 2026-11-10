@@ -77,7 +77,7 @@ const Navbar = () => {
               <span className="font-heading font-bold text-xl sm:text-2xl tracking-tight text-ivory-100 group-hover:text-lime-accent transition-colors">
                 ELITE
               </span>
-              <span className="hidden sm:inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-lime-accent bg-lime-muted border border-lime-border px-2 py-0.5 rounded">
+              <span className="hidden sm:inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-lime-accent bg-lime-muted border border-lime-border px-2 py-0.5 rounded">
                 <span className="w-1.5 h-1.5 rounded-full bg-lime-accent animate-pulse"></span>
                 AI // FS
               </span>
@@ -143,7 +143,7 @@ const Navbar = () => {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={navigateToResume}
-              className="editorial-btn-primary !text-[11px] !py-2 !px-3 font-mono min-h-[40px]"
+              className="editorial-btn-primary !text-xs !py-2 !px-3 font-mono min-h-[44px]"
               aria-label="Open Resume"
             >
               Resume

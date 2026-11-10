@@ -37,6 +37,13 @@ export const projectsData = [
     github_link: null,
     category: "AI & Automation",
     featured: true,
+    problem:
+      "Businesses experience significant lead leakage, missed after-hours inquiries, and scheduling friction due to manual front-office handling and disjointed communications.",
+    solution:
+      "Engineered an autonomous voice AI receptionist platform using Retell SDK, Twilio, and OpenAI with sub-second turn-taking, automated Cal.com scheduling, and a multi-tenant administration console.",
+    result:
+      "Production-deployed platform delivering unified voice, SMS, and web chat workflows with real-time conversation auditing and CRM synchronization.",
+    gallery: [cognidriftImg],
     architecturePoints: [
       { title: "Real-time Voicebot", desc: "Low-latency telephony handling via Retell SDK & Twilio" },
       { title: "Smart Scheduling", desc: "Autonomous appointment booking via Cal.com & Google Calendar" },
@@ -69,6 +76,13 @@ export const projectsData = [
     live_link: null, // Replace with your live demo deployment URL
     category: "Full Stack",
     featured: false,
+    problem:
+      "Independent restaurants face inventory loss, inaccurate COGS calculation, and reconciliation errors when operating disconnected POS, kitchen, and inventory systems.",
+    solution:
+      "Architected a single-branch ERP featuring a bilingual customer ordering application, real-time Kitchen Display System (KDS), and automated recipe-based FIFO inventory depletion using native MongoDB ACID multi-document transactions.",
+    result:
+      "End-to-end restaurant management system with tamper-evident cashier drawer closing, least-privilege role-based access control, and 45+ automated integration tests.",
+    gallery: [classioImg],
     architecturePoints: [
       {
         title: "End-to-End Restaurant Management",
@@ -117,6 +131,13 @@ export const projectsData = [
     live_link: "https://insightly-facts.web.app/",
     category: "Full Stack",
     featured: false,
+    problem:
+      "Digital publications require structured editorial submission gates, authenticated author workflows, and gated subscription tiers without sacrificing page load performance.",
+    solution:
+      "Constructed a full-stack journalism CMS combining Firebase authentication, JWT-guarded API endpoints, paginated MongoDB article indexing, and Stripe billing webhooks.",
+    result:
+      "Production editorial platform with role-based publisher administration, article review pipelines, and secure subscription tiering.",
+    gallery: [projectFour],
   },
   {
     id: "marathon",
@@ -142,6 +163,13 @@ export const projectsData = [
     live_link: "https://gomarathonbd.web.app/",
     category: "Full Stack",
     featured: false,
+    problem:
+      "Event organizers encounter registration concurrency bottlenecks, data race conditions in participant tallies, and disorganized runner credential management during peak enrollment windows.",
+    solution:
+      "Engineered an event orchestration platform with role-based UI separation, Firebase OAuth authentication, and atomic database increments preventing over-registration.",
+    result:
+      "Centralized event management portal with participant dashboards, real-time runner counters, and organizer management tools.",
+    gallery: [marathonImg],
   },
   {
     id: "winter-donation",
@@ -159,6 +187,13 @@ export const projectsData = [
     live_link: "https://winter-cloth-donation-auth.web.app/",
     category: "Full Stack",
     featured: false,
+    problem:
+      "Cold-wave humanitarian campaigns in Bangladesh struggle with regional coordination bottlenecks between dispersed individual donors and volunteer distribution points.",
+    solution:
+      "Designed a community aid platform featuring interactive division-by-division donation drives, volunteer pickup routing, and transparent pledge logging.",
+    result:
+      "Deployed aid coordination web application enabling regional donor pledges and local volunteer point discovery.",
+    gallery: [projectOne],
   },
   {
     id: "gadget-heaven",
@@ -176,6 +211,13 @@ export const projectsData = [
     live_link: "https://gadget-heaven.netlify.app",
     category: "Frontend",
     featured: false,
+    problem:
+      "Consumer electronics catalogs often encounter state desynchronization between cart tallies, wishlist registries, and inventory availability across route navigation.",
+    solution:
+      "Constructed a clean Context API architecture with persistent browser storage synchronization, dynamic multi-attribute category filtering, and instant price sorting.",
+    result:
+      "High-performance client-side catalog with seamless persistent state management and real-time checkout calculations.",
+    gallery: [projectTwo],
   },
   {
     id: "dream11-bpl",
@@ -193,5 +235,12 @@ export const projectsData = [
     live_link: "https://make-your-bpl-dream11-team.netlify.app/",
     category: "Frontend",
     featured: false,
+    problem:
+      "Fantasy sports squad builders require strict real-time enforcement of multi-variable constraints (budget caps, player roles, team quotas) without sluggish UI re-renders.",
+    solution:
+      "Developed custom React state hooks providing instantaneous client-side roster validation, budget balancing math, and instant visual state indicators.",
+    result:
+      "Tactical team construction application with live budget tracking and dynamic roster constraint feedback.",
+    gallery: [projectThree],
   },
 ];

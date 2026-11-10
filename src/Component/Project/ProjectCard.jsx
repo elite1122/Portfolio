@@ -115,6 +115,7 @@ const ProjectCard = ({ project, onSelect, index = 0 }) => {
       initial="hidden"
       animate="visible"
       exit="exit"
+      onClick={() => onSelect(project)}
       onMouseMove={shouldReduceMotion ? undefined : onMouseMove}
       onMouseLeave={onMouseLeave}
       onMouseEnter={() => setHovered(true)}
@@ -165,11 +166,11 @@ const ProjectCard = ({ project, onSelect, index = 0 }) => {
           <svg className="w-2.5 h-2.5 text-lime-accent/70 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
           </svg>
-          <span className="text-[11px] text-ivory-400 truncate">{displayUrl}</span>
+          <span className="text-xs text-ivory-400 truncate">{displayUrl}</span>
         </div>
 
         {/* Category badge */}
-        <span className="shrink-0 px-2 py-0.5 rounded bg-lime-muted border border-lime-border text-lime-accent font-mono text-[11px] font-medium whitespace-nowrap">
+        <span className="shrink-0 px-2 py-0.5 rounded bg-lime-muted border border-lime-border text-lime-accent font-mono text-xs font-medium whitespace-nowrap">
           {project.category}
         </span>
       </div>
@@ -268,6 +269,7 @@ const ProjectCard = ({ project, onSelect, index = 0 }) => {
             href={project.github_link}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
             aria-label={`View ${project.name} source code on GitHub`}
             className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg
                        bg-obsidian-800 border border-obsidian-700
@@ -284,6 +286,7 @@ const ProjectCard = ({ project, onSelect, index = 0 }) => {
             href={project.live_link}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
             aria-label={`Open ${project.name} live deployment`}
             className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg
                        bg-obsidian-800 border border-obsidian-700
